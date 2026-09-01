@@ -68,9 +68,51 @@ export interface HomeProductSection extends PageSectionBase<"featured-products">
   productIds: string[];
 }
 
+export interface HomeScentDiscoverySection extends PageSectionBase<"scent-discovery"> {
+  eyebrow: string;
+  title: string;
+  description: string;
+  cta: CTA;
+  topNotes: string[];
+  middleNotes: string[];
+  baseNotes: string[];
+  longevityLabel: string;
+  intensityLabel: string;
+}
+
+export interface HomeIngredient {
+  id: string;
+  name: string;
+  image: MediaAsset;
+  enabled: boolean;
+  order: number;
+}
+
+export interface HomeIngredientsSection extends PageSectionBase<"ingredients"> {
+  title: string;
+  items: HomeIngredient[];
+}
+
+export interface HomePackagingSection extends PageSectionBase<"packaging"> {
+  title: string;
+  description: string;
+  image: MediaAsset;
+  cta: CTA;
+  benefits: BenefitItem[];
+}
+
+export interface HomeNewsletterSection extends PageSectionBase<"newsletter"> {
+  title: string;
+  description: string;
+}
+
 export interface HomePageData {
   seo: SEOData;
   hero: HomeHeroSection;
   trustBar: HomeTrustSection;
   featuredProducts: HomeProductSection;
+  scentDiscovery: HomeScentDiscoverySection;
+  ingredients: HomeIngredientsSection;
+  packaging: HomePackagingSection;
+  newsletter: HomeNewsletterSection;
 }
