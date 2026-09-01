@@ -1,0 +1,55 @@
+:root {
+  --sv-color-ivory: #faf7f1;
+  --sv-color-paper: #fffdf9;
+  --sv-color-sand: #f1e9dc;
+  --sv-color-sand-deep: #ded0bd;
+  --sv-color-teal: #083c3d;
+  --sv-color-teal-hover: #0d4a4b;
+  --sv-color-gold: #a27c43;
+  --sv-color-gold-soft: #c7ad7d;
+  --sv-color-ink: #31291f;
+  --sv-color-muted: #766c60;
+  --sv-color-line: #dfd5c6;
+  --sv-color-danger: #9d3d35;
+
+  --sv-font-display: var(--font-display), Georgia, serif;
+  --sv-font-body: var(--font-body), Arial, sans-serif;
+
+  --sv-container-max: 87.5rem;
+  --sv-gutter: clamp(1.25rem, 3vw, 3rem);
+  --sv-space-2xs: 0.25rem;
+  --sv-space-xs: 0.5rem;
+  --sv-space-sm: 0.75rem;
+  --sv-space-md: 1rem;
+  --sv-space-lg: 1.5rem;
+  --sv-space-xl: 2.5rem;
+  --sv-space-2xl: clamp(3.5rem, 7vw, 6.5rem);
+  --sv-space-3xl: clamp(4.5rem, 10vw, 9rem);
+
+  --sv-radius-sm: 0.125rem;
+  --sv-radius-md: 0.25rem;
+  --sv-border-width: 1px;
+  --sv-shadow-card: 0 8px 24px rgb(49 41 31 / 4%);
+  --sv-shadow-float: 0 16px 40px rgb(49 41 31 / 10%);
+  --sv-transition-fast: 200ms;
+  --sv-transition-base: 300ms;
+}
+
+@theme inline {
+  --color-brand-ivory: var(--sv-color-ivory);
+  --color-brand-paper: var(--sv-color-paper);
+  --color-brand-sand: var(--sv-color-sand);
+  --color-brand-sand-deep: var(--sv-color-sand-deep);
+  --color-brand-teal: var(--sv-color-teal);
+  --color-brand-teal-hover: var(--sv-color-teal-hover);
+  --color-brand-gold: var(--sv-color-gold);
+  --color-brand-gold-soft: var(--sv-color-gold-soft);
+  --color-brand-ink: var(--sv-color-ink);
+  --color-brand-muted: var(--sv-color-muted);
+  --color-brand-line: var(--sv-color-line);
+  --color-brand-danger: var(--sv-color-danger);
+  --font-display: var(--sv-font-display);
+  --font-body: var(--sv-font-body);
+  --shadow-card: var(--sv-shadow-card);
+  --shadow-float: var(--sv-shadow-float);
+}
