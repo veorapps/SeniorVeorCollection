@@ -3,6 +3,7 @@ import { placeholderMedia } from "./media";
 
 export const mockSiteSettings: SiteSettings = {
   siteName: "Senior Veor Collection",
+  brandDescription: "Kokunun zarafetle buluştuğu premium parfüm deneyimi.",
   logo: placeholderMedia("Senior Veor", "ivory", 360, 120),
   defaultSEO: { metaTitle: "Senior Veor Collection", metaDescription: "Kokunun zarafetle buluştuğu premium parfüm koleksiyonu." },
   announcements: [
@@ -19,9 +20,16 @@ export const mockSiteSettings: SiteSettings = {
     { id: "blog", label: "Blog", href: "/blog", enabled: true, order: 6 },
     { id: "contact", label: "İletişim", href: "/iletisim", enabled: true, order: 7 },
   ],
-  footerColumns: [],
+  footerColumns: [
+    { id: "footer-corporate", title: "Kurumsal", enabled: true, order: 1, links: [{ id: "about", label: "Hakkımızda", href: "/hakkimizda" }, { id: "career", label: "Kariyer", href: "/kariyer" }, { id: "press", label: "Basında Biz", href: "/basinda-biz" }, { id: "sustainability", label: "Sürdürülebilirlik", href: "/surdurulebilirlik" }] },
+    { id: "footer-service", title: "Müşteri Hizmetleri", enabled: true, order: 2, links: [{ id: "faq", label: "Sıkça Sorulan Sorular", href: "/iletisim#sss" }, { id: "shipping", label: "Kargo ve Teslimat", href: "/kargo-teslimat" }, { id: "returns", label: "İade ve Değişim", href: "/iade-degisim" }, { id: "privacy", label: "Gizlilik Politikası", href: "/gizlilik" }] },
+    { id: "footer-help", title: "Yardım", enabled: true, order: 3, links: [{ id: "contact", label: "İletişim", href: "/iletisim" }, { id: "track", label: "Sipariş Takibi", href: "/siparis-takibi" }, { id: "terms", label: "Üyelik Sözleşmesi", href: "/uyelik-sozlesmesi" }, { id: "kvkk", label: "KVKK", href: "/kvkk" }] },
+  ],
+  footerContactTitle: "İletişim",
   contact: { phone: "+90 850 123 45 67", email: "info@seniorveorcollection.com", address: "Maslak Mah. Büyükdere Cad. No: 123 Sarıyer / İstanbul", workingHours: ["Pazartesi – Cuma: 09:00 – 18:00"] },
-  socialLinks: [],
+  socialLinks: [{ id: "instagram", label: "Instagram", href: "#", icon: "instagram" }, { id: "facebook", label: "Facebook", href: "#", icon: "facebook" }, { id: "youtube", label: "YouTube", href: "#", icon: "youtube" }, { id: "tiktok", label: "TikTok", href: "#", icon: "music-2" }],
+  paymentProviders: ["VISA", "Mastercard", "Troy", "iyzico"],
+  copyright: "© 2026 Senior Veor Collection. Tüm hakları saklıdır.",
 };
 
 export const mockHomePage: HomePageData = {

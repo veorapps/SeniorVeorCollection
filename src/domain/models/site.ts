@@ -26,13 +26,17 @@ export interface SocialLink {
 
 export interface SiteSettings {
   siteName: string;
+  brandDescription: string;
   logo: MediaAsset;
   defaultSEO: SEOData;
   announcements: AnnouncementItem[];
   navigation: NavigationItem[];
   footerColumns: FooterColumn[];
+  footerContactTitle: string;
   contact: ContactDetails;
   socialLinks: SocialLink[];
+  paymentProviders: string[];
+  copyright: string;
 }
 
 export interface HomeHeroSlide {
