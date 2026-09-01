@@ -8,6 +8,7 @@ export const mockSiteSettings: SiteSettings = {
   announcements: [
     { id: "announcement-story", text: "Zarafetin İmzası. Her Şişede Bir Hikâye.", enabled: true, order: 1 },
     { id: "announcement-shipping", text: "Ücretsiz Kargo 750₺ ve üzeri", enabled: true, order: 2 },
+    { id: "announcement-payment", text: "Hızlı ve Güvenli Alışveriş", enabled: true, order: 3 },
   ],
   navigation: [
     { id: "home", label: "Ana Sayfa", href: "/", enabled: true, order: 1 },

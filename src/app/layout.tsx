@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import type { ReactNode } from "react";
+import { Header } from "@/components/layout/Header";
+import { contentService } from "@/services";
 import "./globals.css";
 
 const displayFont = Cormorant_Garamond({
@@ -20,10 +22,15 @@ export const metadata: Metadata = {
   description: "Premium parfüm koleksiyonu",
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+  const siteSettings = await contentService.getSiteSettings();
+
   return (
     <html lang="tr">
-      <body className={`${displayFont.variable} ${bodyFont.variable}`}>{children}</body>
+      <body className={`${displayFont.variable} ${bodyFont.variable}`}>
+        <Header announcements={siteSettings.announcements} navigation={siteSettings.navigation} siteName={siteSettings.siteName} />
+        {children}
+      </body>
     </html>
   );
 }
