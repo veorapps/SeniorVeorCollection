@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Clock3, Sparkles } from "lucide-react";
+import { ArrowRight, BadgeCheck, Clock3, Gift, Sparkles } from "lucide-react";
 import type { HomePageData, Product } from "@/domain/models";
 import { Container } from "@/components/ui/Container";
 import { Media } from "@/components/ui/Media";
@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { NewsletterBanner } from "@/components/layout/NewsletterBanner";
 import { TrustBar } from "@/components/layout/TrustBar";
 import { ProductCarousel } from "@/components/product/ProductCarousel";
+
+const packagingIconByName = { "badge-check": BadgeCheck, "heart-handshake": Gift, sparkles: Sparkles };
 
 export interface HomePageProps {
   data: HomePageData;
@@ -36,9 +38,9 @@ export function HomePage({ data, featuredProducts }: HomePageProps) {
 
       {data.ingredients.enabled ? <section className="py-6"><Container><div className="flex items-end gap-5"><h2 className="mb-0 max-w-28 font-display text-xl leading-none text-brand-ink">{data.ingredients.title}</h2><div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">{data.ingredients.items.filter((item) => item.enabled).sort((a, b) => a.order - b.order).map((item) => <div className="w-24 shrink-0 border border-brand-line bg-brand-paper p-1 text-center" key={item.id}><Media asset={item.image} className="aspect-[4/3] object-cover" sizes="6rem" /><span className="mt-1.5 block text-[0.625rem] text-brand-ink">{item.name}</span></div>)}</div></div></Container></section> : null}
 
-      {data.packaging.enabled ? <section className="border-y border-brand-line bg-brand-sand"><Container className="grid gap-0 py-0 lg:grid-cols-[0.85fr_0.8fr_1.2fr]"><div className="relative min-h-52 overflow-hidden"><Media asset={data.packaging.image} className="absolute inset-0 h-full w-full object-cover object-[68%_center]" sizes="(min-width: 1024px) 34vw, 100vw" /></div><div className="py-8 lg:px-7"><h2 className="font-display text-[2rem] leading-[0.94] text-brand-ink">{data.packaging.title}</h2><p className="mt-3 text-[0.75rem] leading-5 text-brand-muted">{data.packaging.description}</p><Link className="mt-5 inline-flex min-h-10 items-center bg-brand-teal px-4 text-[0.625rem] font-semibold tracking-[0.1em] text-brand-ivory uppercase" href={data.packaging.cta.href}>{data.packaging.cta.label}</Link></div><div className="grid bg-brand-teal text-brand-ivory sm:grid-cols-3 lg:grid-cols-3">{data.packaging.benefits.filter((item) => item.enabled).map((item) => <div className="border-brand-ivory/15 p-5 text-center sm:border-r sm:last:border-r-0" key={item.id}><h3 className="text-[0.625rem] font-semibold tracking-[0.1em] uppercase">{item.title}</h3><p className="mt-2 text-[0.625rem] leading-4 text-brand-sand-deep">{item.description}</p></div>)}</div></Container></section> : null}
+      {data.packaging.enabled ? <section className="border-y border-brand-line bg-brand-sand"><div className="grid lg:grid-cols-[0.9fr_0.85fr_1.25fr]"><div className="relative min-h-52 overflow-hidden"><Media asset={data.packaging.image} className="absolute inset-0 h-full w-full object-cover object-[68%_center]" sizes="(min-width: 1024px) 32vw, 100vw" /></div><div className="flex items-center px-8 py-7 lg:px-10"><div><h2 className="font-display text-[1.9rem] leading-[0.94] text-brand-ink">{data.packaging.title}</h2><p className="mt-2 max-w-md text-[0.75rem] leading-5 text-brand-muted">{data.packaging.description}</p><Link className="mt-4 inline-flex min-h-10 items-center bg-brand-teal px-4 text-[0.625rem] font-semibold tracking-[0.1em] text-brand-ivory uppercase" href={data.packaging.cta.href}>{data.packaging.cta.label}<ArrowRight aria-hidden="true" className="ml-2 size-4" strokeWidth={1.4} /></Link></div></div><div className="p-5 lg:p-7"><div className="grid h-full bg-brand-teal text-brand-ivory sm:grid-cols-3">{data.packaging.benefits.filter((item) => item.enabled).sort((a, b) => a.order - b.order).map((item) => { const Icon = packagingIconByName[item.icon as keyof typeof packagingIconByName] ?? Sparkles; return <div className="flex flex-col items-center justify-center border-brand-ivory/20 p-4 text-center sm:border-r sm:last:border-r-0" key={item.id}><Icon aria-hidden="true" className="size-7 text-brand-gold-soft" strokeWidth={1.35} /><h3 className="mt-3 text-[0.625rem] font-semibold tracking-[0.1em] uppercase">{item.title}</h3><p className="mt-1 text-[0.625rem] leading-4 text-brand-sand-deep">{item.description}</p></div>; })}</div></div></div></section> : null}
 
-      {data.newsletter.enabled ? <NewsletterBanner description={data.newsletter.description} title={data.newsletter.title} /> : null}
+      {data.newsletter.enabled ? <NewsletterBanner description={data.newsletter.description} title={data.newsletter.title} variant="home" /> : null}
     </main>
   );
 }
