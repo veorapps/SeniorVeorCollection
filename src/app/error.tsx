@@ -1,0 +1,3 @@
+"use client";
+import { useEffect } from "react";
+export default function ErrorPage({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) { useEffect(() => { console.error(error); }, [error]); return <main className="mx-auto max-w-[var(--sv-container-max)] px-[var(--sv-gutter)] py-24 text-center"><p className="text-xs font-semibold tracking-[0.2em] text-brand-gold uppercase">Beklenmedik Bir Durum</p><h1 className="mt-4 font-display text-5xl text-brand-ink">Bir şeyler yolunda gitmedi</h1><button className="mt-8 min-h-11 bg-brand-teal px-5 text-xs font-semibold tracking-[0.08em] text-brand-ivory uppercase" onClick={reset}>Tekrar Dene</button></main>; }

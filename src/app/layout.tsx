@@ -20,7 +20,8 @@ const bodyFont = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Senior Veor Collection",
+  metadataBase: new URL("https://seniorveorcollection.com"),
+  title: { default: "Senior Veor Collection", template: "%s | Senior Veor Collection" },
   description: "Premium parfüm koleksiyonu",
 };
 
