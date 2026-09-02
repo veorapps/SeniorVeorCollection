@@ -18,7 +18,7 @@ export function TrustBar({ className, items }: TrustBarProps) {
       <div className="mx-auto grid max-w-[var(--sv-container-max)] divide-y divide-brand-line px-[var(--sv-gutter)] sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
         {visibleItems.map((item) => {
           const Icon = icons[item.icon as keyof typeof icons] ?? ShieldCheck;
-          return <div className="flex items-center gap-3 py-5 sm:px-5 sm:first:pl-0 lg:py-6" key={item.id}><Icon aria-hidden="true" className="size-6 shrink-0 text-brand-gold" strokeWidth={1.35} /><div><h2 className="text-xs font-semibold tracking-[0.08em] text-brand-ink uppercase">{item.title}</h2><p className="mt-1 text-xs leading-4 text-brand-muted">{item.description}</p></div></div>;
+          return <div className="flex items-center gap-3 py-4 sm:px-5 sm:first:pl-0 lg:py-4.5" key={item.id}><Icon aria-hidden="true" className="size-[1.35rem] shrink-0 text-brand-gold" strokeWidth={1.3} /><div><h2 className="text-[0.6875rem] font-semibold tracking-[0.08em] text-brand-ink uppercase">{item.title}</h2><p className="mt-0.5 text-[0.6875rem] leading-4 text-brand-muted">{item.description}</p></div></div>;
         })}
       </div>
     </section>

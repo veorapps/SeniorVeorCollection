@@ -1,36 +1,33 @@
 :root {
-  --sv-color-ivory: #faf7f1;
-  --sv-color-paper: #fffdf9;
-  --sv-color-sand: #f1e9dc;
-  --sv-color-sand-deep: #ded0bd;
-  --sv-color-teal: #083c3d;
-  --sv-color-teal-hover: #0d4a4b;
-  --sv-color-gold: #a27c43;
-  --sv-color-gold-soft: #c7ad7d;
-  --sv-color-ink: #31291f;
-  --sv-color-muted: #766c60;
-  --sv-color-line: #dfd5c6;
+  --sv-color-ivory: #f9f5ee;
+  --sv-color-paper: #fffdfa;
+  --sv-color-sand: #f0e6d7;
+  --sv-color-sand-deep: #d9c9b3;
+  --sv-color-teal: #053b3c;
+  --sv-color-teal-hover: #0a4b4b;
+  --sv-color-gold: #9d7942;
+  --sv-color-gold-soft: #c7ae82;
+  --sv-color-ink: #352b21;
+  --sv-color-muted: #74695e;
+  --sv-color-line: #e4d9ca;
   --sv-color-danger: #9d3d35;
 
-  --sv-font-display: var(--font-display), Georgia, serif;
-  --sv-font-body: var(--font-body), Arial, sans-serif;
-
-  --sv-container-max: 87.5rem;
-  --sv-gutter: clamp(1.25rem, 3vw, 3rem);
+  --sv-container-max: 80rem;
+  --sv-gutter: clamp(1.125rem, 2.6vw, 2.5rem);
   --sv-space-2xs: 0.25rem;
   --sv-space-xs: 0.5rem;
   --sv-space-sm: 0.75rem;
   --sv-space-md: 1rem;
   --sv-space-lg: 1.5rem;
-  --sv-space-xl: 2.5rem;
-  --sv-space-2xl: clamp(3.5rem, 7vw, 6.5rem);
-  --sv-space-3xl: clamp(4.5rem, 10vw, 9rem);
+  --sv-space-xl: 2.25rem;
+  --sv-space-2xl: clamp(2.75rem, 5vw, 4.5rem);
+  --sv-space-3xl: clamp(4rem, 8vw, 7rem);
 
   --sv-radius-sm: 0.125rem;
   --sv-radius-md: 0.25rem;
   --sv-border-width: 1px;
-  --sv-shadow-card: 0 8px 24px rgb(49 41 31 / 4%);
-  --sv-shadow-float: 0 16px 40px rgb(49 41 31 / 10%);
+  --sv-shadow-card: 0 4px 14px rgb(53 43 33 / 3%);
+  --sv-shadow-float: 0 14px 34px rgb(53 43 33 / 9%);
   --sv-transition-fast: 200ms;
   --sv-transition-base: 300ms;
 }
@@ -48,8 +45,6 @@
   --color-brand-muted: var(--sv-color-muted);
   --color-brand-line: var(--sv-color-line);
   --color-brand-danger: var(--sv-color-danger);
-  --font-display: var(--sv-font-display);
-  --font-body: var(--sv-font-body);
   --shadow-card: var(--sv-shadow-card);
   --shadow-float: var(--sv-shadow-float);
 }

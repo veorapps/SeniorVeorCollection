@@ -26,8 +26,8 @@ export function NewsletterBanner({ description, title }: NewsletterBannerProps) 
 
   return (
     <section className="overflow-hidden border-y border-brand-line bg-brand-sand" aria-labelledby="newsletter-title">
-      <div className="mx-auto grid max-w-[var(--sv-container-max)] gap-6 px-[var(--sv-gutter)] py-8 md:grid-cols-[1fr_minmax(22rem,0.85fr)] md:items-center md:py-10">
-        <div><h2 className="font-display text-3xl leading-none text-brand-ink" id="newsletter-title">{title}</h2><p className="mt-3 max-w-md text-sm leading-6 text-brand-muted">{description}</p></div>
+      <div className="mx-auto grid max-w-[var(--sv-container-max)] gap-5 px-[var(--sv-gutter)] py-6 md:grid-cols-[1fr_minmax(22rem,0.85fr)] md:items-center md:py-7">
+        <div><h2 className="font-display text-[1.7rem] leading-none text-brand-ink" id="newsletter-title">{title}</h2><p className="mt-2 max-w-md text-[0.8125rem] leading-5 text-brand-muted">{description}</p></div>
         <form noValidate onSubmit={handleSubmit}>
           <label className="sr-only" htmlFor="newsletter-email">E-posta adresiniz</label>
           <div className="flex flex-col gap-2 sm:flex-row">

@@ -10,8 +10,8 @@ export function AnnouncementBar({ items }: AnnouncementBarProps) {
   if (visibleItems.length === 0) return null;
 
   return (
-    <div className="border-b border-brand-line bg-brand-sand px-[var(--sv-gutter)] py-2 text-[0.625rem] font-medium tracking-[0.08em] text-brand-muted uppercase">
-      <div className="mx-auto flex max-w-[var(--sv-container-max)] items-center justify-center gap-x-8 gap-y-1 overflow-hidden whitespace-nowrap">
+    <div className="border-b border-brand-line bg-brand-sand px-[var(--sv-gutter)] py-1.5 text-[0.5625rem] font-medium tracking-[0.1em] text-brand-muted uppercase">
+      <div className="mx-auto flex max-w-[var(--sv-container-max)] items-center justify-center gap-x-10 gap-y-1 overflow-hidden whitespace-nowrap">
         {visibleItems.map((item) => <span key={item.id}>{item.text}</span>)}
       </div>
     </div>

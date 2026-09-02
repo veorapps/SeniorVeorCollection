@@ -62,26 +62,26 @@ export function Header({ announcements, navigation, siteName }: HeaderProps) {
     <header className="relative z-30 bg-brand-paper">
       {pathname === "/" ? <AnnouncementBar items={announcements} /> : null}
       <div className="border-b border-brand-line">
-        <div className="mx-auto flex h-[4.75rem] max-w-[var(--sv-container-max)] items-center justify-between gap-3 px-[var(--sv-gutter)] lg:h-[5.25rem]">
+        <div className="mx-auto flex h-[4.5rem] max-w-[var(--sv-container-max)] items-center justify-between gap-3 px-[var(--sv-gutter)] lg:h-[4.625rem]">
           <div className="flex min-w-0 items-center gap-1 lg:flex-1">
             <IconButton aria-label="Menüyü aç" className="lg:hidden" onClick={() => setIsMenuOpen(true)}>
               <Menu aria-hidden="true" className="size-5" strokeWidth={1.5} />
             </IconButton>
             <Link aria-label={siteName} className="group flex min-w-0 items-center gap-2 text-brand-teal" href="/">
-              <span aria-hidden="true" className="font-display text-3xl leading-none text-brand-gold">SV</span>
+              <span aria-hidden="true" className="font-display text-[2.1rem] leading-none text-brand-gold">SV</span>
               <span className="min-w-0 leading-none">
-                <span className="block truncate font-display text-xl tracking-[0.04em] uppercase sm:text-2xl">Senior Veor</span>
-                <span className="block pt-0.5 text-center text-[0.5rem] font-semibold tracking-[0.22em] uppercase">Collection</span>
+                <span className="block truncate font-display text-[1.15rem] tracking-[0.075em] uppercase sm:text-[1.35rem]">Senior Veor</span>
+                <span className="block pt-0.5 text-center text-[0.45rem] font-semibold tracking-[0.28em] uppercase">Collection</span>
               </span>
             </Link>
           </div>
 
-          <nav aria-label="Ana navigasyon" className="hidden items-center justify-center gap-6 lg:flex xl:gap-8">
+          <nav aria-label="Ana navigasyon" className="hidden items-center justify-center gap-7 lg:flex xl:gap-9">
             {visibleNavigation.map((item) => {
               const active = isActivePath(pathname, item.href);
               return (
                 <Link
-                  className={cn("relative py-7 text-xs text-brand-ink transition-colors hover:text-brand-teal", active && "font-semibold text-brand-teal after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-brand-gold")}
+                  className={cn("relative py-6 text-[0.6875rem] text-brand-ink transition-colors hover:text-brand-teal", active && "font-semibold text-brand-teal after:absolute after:inset-x-0 after:-bottom-px after:h-px after:bg-brand-gold")}
                   href={item.href}
                   key={item.id}
                   target={item.newTab ? "_blank" : undefined}
