@@ -2,9 +2,7 @@ import { HomePage } from "@/components/home/HomePage";
 import { catalogService, contentService } from "@/services";
 
 export default async function Page() {
-  const [homePage, featuredProducts] = await Promise.all([
-    contentService.getHomePage(),
-    catalogService.getProductsByIds(["product-if-only", "product-after-us", "product-midnight-veil", "product-golden-sillage", "product-velvet-accord"]),
-  ]);
+  const homePage = await contentService.getHomePage();
+  const featuredProducts = await catalogService.getProductsByIds(homePage.featuredProducts.productIds);
   return <HomePage data={homePage} featuredProducts={featuredProducts} />;
 }
