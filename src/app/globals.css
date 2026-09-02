@@ -36,6 +36,18 @@ select {
   font: inherit;
 }
 
+/* Premium editorial system: rectangular UI surfaces; circular status markers stay circular. */
+button,
+input,
+textarea,
+select,
+article,
+details,
+[role="region"],
+[class*="rounded-"]:not(.rounded-full) {
+  border-radius: 0 !important;
+}
+
 button,
 a,
 input,
