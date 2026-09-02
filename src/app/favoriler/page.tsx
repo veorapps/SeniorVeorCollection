@@ -1,0 +1,1 @@
+import { WishlistPage } from "@/components/commerce/CommercePages"; import { catalogService } from "@/services"; export default async function Page(){return <WishlistPage products={await catalogService.getProducts()} />;}

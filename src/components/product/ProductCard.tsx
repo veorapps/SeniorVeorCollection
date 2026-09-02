@@ -7,6 +7,7 @@ import { Media } from "@/components/ui/Media";
 import { RatingStars } from "@/components/ui/RatingStars";
 import { cn } from "@/lib/cn";
 import { ProductPrice } from "./ProductPrice";
+import { useCommerce } from "@/state/CommerceProvider";
 
 const badgeLabels: Record<ProductBadge, string> = { new: "Yeni", "best-seller": "Çok Satan", limited: "Sınırlı" };
 
@@ -19,6 +20,8 @@ export interface ProductCardProps {
 }
 
 export function ProductCard({ className, onWishlistToggle, product, variant = "default", wishlistActive = false }: ProductCardProps) {
+  const { toggleWishlist, wishlist } = useCommerce();
+  const isWishlisted = wishlistActive || wishlist.includes(product.id);
   const isMini = variant === "mini";
   const isCompact = variant === "compact";
   const image = product.images[0];
@@ -30,7 +33,7 @@ export function ProductCard({ className, onWishlistToggle, product, variant = "d
           <Media asset={image} className={cn("transition-transform duration-300 group-hover:scale-[1.025] motion-reduce:transition-none", isMini ? "aspect-square object-contain" : "aspect-[3/4] object-contain")} sizes={isMini ? "12rem" : "(min-width: 1024px) 25vw, 50vw"} />
         </Link>
         {!isMini ? <div className="absolute left-2 top-2 flex flex-col items-start gap-1">{product.badges.map((badge) => <Badge key={badge} tone={badge === "best-seller" ? "gold" : "teal"}>{badgeLabels[badge]}</Badge>)}</div> : null}
-        {!isMini ? <IconButton aria-label={`${product.name} ürününü favorilere ekle`} aria-pressed={wishlistActive} className={cn("absolute right-2 top-2 bg-brand-paper/85", wishlistActive && "text-brand-gold")} onClick={onWishlistToggle ? () => onWishlistToggle(product.id) : undefined}><Heart aria-hidden="true" className={cn("size-4", wishlistActive && "fill-current")} strokeWidth={1.4} /></IconButton> : null}
+        {!isMini ? <IconButton aria-label={`${product.name} ürününü favorilere ekle`} aria-pressed={isWishlisted} className={cn("absolute right-2 top-2 bg-brand-paper/85", isWishlisted && "text-brand-gold")} onClick={() => onWishlistToggle ? onWishlistToggle(product.id) : toggleWishlist(product.id)}><Heart aria-hidden="true" className={cn("size-4", isWishlisted && "fill-current")} strokeWidth={1.4} /></IconButton> : null}
       </div>
       <div className={cn(isMini ? "pt-2" : "pt-4")}>
         <Link className="block" href={`/parfumler/${product.slug}`}><h3 className={cn("font-display text-brand-ink", isMini ? "text-base" : isCompact ? "text-lg" : "text-xl")}>{product.name}</h3></Link>

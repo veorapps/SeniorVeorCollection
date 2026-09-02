@@ -1,0 +1,1 @@
+import { CartPage } from "@/components/commerce/CommercePages"; import { catalogService } from "@/services"; export default async function Page(){return <CartPage products={await catalogService.getProducts()} />;}

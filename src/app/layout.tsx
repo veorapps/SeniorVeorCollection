@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { contentService } from "@/services";
+import { CommerceProvider } from "@/state/CommerceProvider";
 import "./globals.css";
 
 const displayFont = Cormorant_Garamond({
@@ -29,9 +30,9 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html data-scroll-behavior="smooth" lang="tr">
       <body className={`${displayFont.variable} ${bodyFont.variable}`}>
-        <Header announcements={siteSettings.announcements} navigation={siteSettings.navigation} siteName={siteSettings.siteName} />
+        <CommerceProvider><Header announcements={siteSettings.announcements} navigation={siteSettings.navigation} siteName={siteSettings.siteName} />
         {children}
-        <Footer settings={siteSettings} />
+        <Footer settings={siteSettings} /></CommerceProvider>
       </body>
     </html>
   );

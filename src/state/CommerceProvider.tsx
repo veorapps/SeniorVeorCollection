@@ -1,0 +1,7 @@
+"use client";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
+type CartEntry = { productId: string; variantId: string; quantity: number };
+type Commerce = { cart: CartEntry[]; wishlist: string[]; addCart: (entry: CartEntry) => void; toggleWishlist: (id: string) => void };
+const CommerceContext = createContext<Commerce | null>(null);
+export function CommerceProvider({ children }: { children: React.ReactNode }) { const [cart,setCart]=useState<CartEntry[]>(()=>typeof window === "undefined" ? [] : JSON.parse(localStorage.getItem("sv-cart")??"[]")); const [wishlist,setWishlist]=useState<string[]>(()=>typeof window === "undefined" ? [] : JSON.parse(localStorage.getItem("sv-wishlist")??"[]")); useEffect(()=>localStorage.setItem("sv-cart",JSON.stringify(cart)),[cart]); useEffect(()=>localStorage.setItem("sv-wishlist",JSON.stringify(wishlist)),[wishlist]); const value=useMemo(()=>({cart,wishlist,addCart:(entry:CartEntry)=>setCart(items=>{const found=items.find(i=>i.productId===entry.productId&&i.variantId===entry.variantId);return found?items.map(i=>i===found?{...i,quantity:i.quantity+entry.quantity}:i):[...items,entry];}),toggleWishlist:(id:string)=>setWishlist(items=>items.includes(id)?items.filter(i=>i!==id):[...items,id])}),[cart,wishlist]); return <CommerceContext.Provider value={value}>{children}</CommerceContext.Provider>; }
+export function useCommerce(){const value=useContext(CommerceContext);if(!value) throw new Error("CommerceProvider gerekli");return value;}

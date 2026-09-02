@@ -8,6 +8,7 @@ import type { AnnouncementItem, NavigationItem } from "@/domain/models";
 import { IconButton } from "@/components/ui/IconButton";
 import { cn } from "@/lib/cn";
 import { AnnouncementBar } from "./AnnouncementBar";
+import { useCommerce } from "@/state/CommerceProvider";
 
 export interface HeaderProps {
   announcements: AnnouncementItem[];
@@ -25,6 +26,8 @@ export function Header({ announcements, navigation, siteName }: HeaderProps) {
   const menuPanelRef = useRef<HTMLElement>(null);
   const pathname = usePathname() ?? "/";
   const visibleNavigation = navigation.filter((item) => item.enabled).sort((a, b) => a.order - b.order);
+  const { cart, wishlist } = useCommerce();
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   useEffect(() => {
     if (!isMenuOpen) return undefined;
@@ -89,8 +92,8 @@ export function Header({ announcements, navigation, siteName }: HeaderProps) {
           <div className="flex flex-1 items-center justify-end gap-0.5 sm:gap-1">
             <IconButton aria-label="Ara"><Search aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></IconButton>
             <IconButton aria-label="Hesabım" className="hidden sm:inline-flex"><UserRound aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></IconButton>
-            <Link aria-label="Favoriler" className="inline-flex size-11 items-center justify-center text-brand-teal transition-colors hover:border-brand-line hover:bg-brand-paper" href="/favoriler"><Heart aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></Link>
-            <Link aria-label="Sepet" className="relative inline-flex size-11 items-center justify-center text-brand-teal transition-colors hover:border-brand-line hover:bg-brand-paper" href="/sepet"><ShoppingBag aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /><span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">0</span></Link>
+            <Link aria-label={`Favoriler (${wishlist.length})`} className="relative inline-flex size-11 items-center justify-center text-brand-teal transition-colors hover:border-brand-line hover:bg-brand-paper" href="/favoriler"><Heart aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} />{wishlist.length ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{wishlist.length}</span> : null}</Link>
+            <Link aria-label={`Sepet (${cartCount})`} className="relative inline-flex size-11 items-center justify-center text-brand-teal transition-colors hover:border-brand-line hover:bg-brand-paper" href="/sepet"><ShoppingBag aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} />{cartCount ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{cartCount}</span> : null}</Link>
           </div>
         </div>
       </div>
