@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Heart, Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
 import type { AnnouncementItem, NavigationItem } from "@/domain/models";
 import { IconButton } from "@/components/ui/IconButton";
@@ -23,6 +23,9 @@ function isActivePath(pathname: string, href: string): boolean {
 
 export function Header({ announcements, navigation, siteName }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter();
   const menuPanelRef = useRef<HTMLElement>(null);
   const pathname = usePathname() ?? "/";
   const visibleNavigation = navigation.filter((item) => item.enabled).sort((a, b) => a.order - b.order);
@@ -90,7 +93,7 @@ export function Header({ announcements, navigation, siteName }: HeaderProps) {
           </nav>
 
           <div className="flex flex-1 items-center justify-end gap-0.5 sm:gap-1">
-            <IconButton aria-label="Ara"><Search aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></IconButton>
+            <IconButton aria-label="Ara" onClick={() => setIsSearchOpen(true)}><Search aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></IconButton>
             <IconButton aria-label="Hesabım" className="hidden sm:inline-flex"><UserRound aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></IconButton>
             <Link aria-label={`Favoriler (${wishlist.length})`} className="relative inline-flex size-11 items-center justify-center text-brand-teal transition-colors hover:border-brand-line hover:bg-brand-paper" href="/favoriler"><Heart aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} />{wishlist.length ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{wishlist.length}</span> : null}</Link>
             <Link aria-label={`Sepet (${cartCount})`} className="relative inline-flex size-11 items-center justify-center text-brand-teal transition-colors hover:border-brand-line hover:bg-brand-paper" href="/sepet"><ShoppingBag aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} />{cartCount ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{cartCount}</span> : null}</Link>
@@ -118,6 +121,7 @@ export function Header({ announcements, navigation, siteName }: HeaderProps) {
           </aside>
         </div>
       ) : null}
+      {isSearchOpen ? <div className="fixed inset-0 z-50 grid place-items-start bg-brand-ink/35 pt-20 px-4" role="presentation"><section aria-label="Ürün ara" aria-modal="true" className="w-full max-w-2xl bg-brand-paper p-5 shadow-float" role="dialog"><div className="flex justify-between gap-4"><h2 className="font-display text-3xl text-brand-ink">Parfüm Ara</h2><IconButton aria-label="Aramayı kapat" onClick={() => setIsSearchOpen(false)}><X aria-hidden="true" /></IconButton></div><form className="mt-5 flex gap-2" onSubmit={(event) => { event.preventDefault(); const value=searchQuery.trim(); setIsSearchOpen(false); router.push(value ? `/parfumler?search=${encodeURIComponent(value)}` : "/parfumler"); }}><label className="sr-only" htmlFor="site-search">Parfüm adı veya nota ara</label><input autoFocus className="min-h-11 flex-1 border border-brand-line px-4 outline-none focus:border-brand-teal" id="site-search" onChange={(event)=>setSearchQuery(event.target.value)} placeholder="Parfüm adı veya nota ara" value={searchQuery} /><button className="min-h-11 bg-brand-teal px-5 text-xs font-semibold tracking-[0.08em] text-brand-ivory uppercase" type="submit">Ara</button></form></section></div> : null}
     </header>
   );
 }
