@@ -2,6 +2,7 @@ import type {
   AnnouncementItem,
   BenefitItem,
   CTA,
+  FAQItem,
   FooterColumn,
   MediaAsset,
   NavigationItem,
@@ -170,4 +171,13 @@ export interface AboutPageData {
   journey: { id: string; type: "journey"; enabled: boolean; order: number; title: string; items: AboutJourneyStep[] };
   packaging: { id: string; type: "about-packaging"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; cta: CTA };
   trustBar: { id: string; type: "about-trust"; enabled: boolean; order: number; items: BenefitItem[] };
+}
+
+export interface DocumentsPageData {
+  seo: SEOData;
+  hero: { id: string; type: "documents-hero"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; highlights: BenefitItem[] };
+  intro: { id: string; type: "documents-intro"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; cta: CTA; benefits: BenefitItem[] };
+  journey: { id: string; type: "documents-journey"; enabled: boolean; order: number; title: string; items: AboutJourneyStep[] };
+  faq: { id: string; type: "documents-faq"; enabled: boolean; order: number; title: string; items: FAQItem[] };
+  stats: { id: string; type: "documents-stats"; enabled: boolean; order: number; items: { id: string; value: string; label: string; enabled: boolean; order: number }[] };
 }

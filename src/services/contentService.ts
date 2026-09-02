@@ -13,6 +13,7 @@ export function createContentService(
     getHomePage: () => pageRepository.getHomePage(),
     getCatalogPage: () => pageRepository.getCatalogPage(),
     getAboutPage: () => pageRepository.getAboutPage(),
+    getDocumentsPage: () => pageRepository.getDocumentsPage(),
     getSiteSettings: () => settingsRepository.getSiteSettings(),
     getCertificates: () => certificateRepository.getAll(),
   };

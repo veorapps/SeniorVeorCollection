@@ -7,7 +7,7 @@ import type {
 } from "@/domain/repositories";
 import type { Product, ProductFilter, ProductSort } from "@/domain/models";
 import { mockBlogPosts } from "./blog";
-import { mockAboutPage, mockCatalogPage, mockCertificates, mockHomePage, mockSiteSettings } from "./site";
+import { mockAboutPage, mockCatalogPage, mockCertificates, mockDocumentsPage, mockHomePage, mockSiteSettings } from "./site";
 import { mockProducts } from "./products";
 
 function sortProducts(products: Product[], sort: ProductSort = "newest"): Product[] {
@@ -39,6 +39,6 @@ export const mockBlogRepository: BlogRepository = {
   async getFeatured() { return mockBlogPosts.find((post) => post.featured && post.enabled) ?? null; },
 };
 
-export const mockPageRepository: PageRepository = { async getHomePage() { return mockHomePage; }, async getCatalogPage() { return mockCatalogPage; }, async getAboutPage() { return mockAboutPage; } };
+export const mockPageRepository: PageRepository = { async getHomePage() { return mockHomePage; }, async getCatalogPage() { return mockCatalogPage; }, async getAboutPage() { return mockAboutPage; }, async getDocumentsPage() { return mockDocumentsPage; } };
 export const mockSettingsRepository: SettingsRepository = { async getSiteSettings() { return mockSiteSettings; } };
 export const mockCertificateRepository: CertificateRepository = { async getAll() { return mockCertificates.filter((certificate) => certificate.enabled); } };
