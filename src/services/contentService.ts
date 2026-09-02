@@ -12,6 +12,7 @@ export function createContentService(
     getFeaturedBlogPost: () => blogRepository.getFeatured(),
     getHomePage: () => pageRepository.getHomePage(),
     getCatalogPage: () => pageRepository.getCatalogPage(),
+    getAboutPage: () => pageRepository.getAboutPage(),
     getSiteSettings: () => settingsRepository.getSiteSettings(),
     getCertificates: () => certificateRepository.getAll(),
   };

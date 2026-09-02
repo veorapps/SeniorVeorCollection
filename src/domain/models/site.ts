@@ -152,3 +152,22 @@ export interface CatalogPageData {
     perfumes: { eyebrow: string; title: string; description: string };
   };
 }
+
+export interface AboutJourneyStep {
+  id: string;
+  title: string;
+  description: string;
+  enabled: boolean;
+  order: number;
+}
+
+export interface AboutPageData {
+  seo: SEOData;
+  hero: { id: string; type: "about-hero"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; cta: CTA };
+  story: { id: string; type: "brand-story"; enabled: boolean; order: number; eyebrow: string; title: string; paragraphs: string[]; image: MediaAsset };
+  craft: { id: string; type: "craft"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; benefits: BenefitItem[] };
+  values: { id: string; type: "values"; enabled: boolean; order: number; title: string; items: BenefitItem[] };
+  journey: { id: string; type: "journey"; enabled: boolean; order: number; title: string; items: AboutJourneyStep[] };
+  packaging: { id: string; type: "about-packaging"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; cta: CTA };
+  trustBar: { id: string; type: "about-trust"; enabled: boolean; order: number; items: BenefitItem[] };
+}
