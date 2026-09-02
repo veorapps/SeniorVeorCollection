@@ -10,10 +10,12 @@ export function createContentService(
     getBlogPosts: (categorySlug?: string) => blogRepository.getAll(categorySlug),
     getBlogPostBySlug: (slug: string) => blogRepository.getBySlug(slug),
     getFeaturedBlogPost: () => blogRepository.getFeatured(),
+    getBlogCategories: () => blogRepository.getCategories(),
     getHomePage: () => pageRepository.getHomePage(),
     getCatalogPage: () => pageRepository.getCatalogPage(),
     getAboutPage: () => pageRepository.getAboutPage(),
     getDocumentsPage: () => pageRepository.getDocumentsPage(),
+    getBlogPage: () => pageRepository.getBlogPage(),
     getSiteSettings: () => settingsRepository.getSiteSettings(),
     getCertificates: () => certificateRepository.getAll(),
   };

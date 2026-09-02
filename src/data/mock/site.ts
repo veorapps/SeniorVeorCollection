@@ -1,4 +1,4 @@
-import type { AboutPageData, CatalogPageData, Certificate, DocumentsPageData, HomePageData, SiteSettings } from "@/domain/models";
+import type { AboutPageData, BlogPageData, CatalogPageData, Certificate, DocumentsPageData, HomePageData, SiteSettings } from "@/domain/models";
 import { placeholderMedia } from "./media";
 
 export const mockSiteSettings: SiteSettings = {
@@ -78,6 +78,12 @@ export const mockDocumentsPage: DocumentsPageData = {
   journey: { id: "documents-journey", type: "documents-journey", enabled: true, order: 3, title: "3 Adımda Güven", items: [{ id: "doc-step-design", title: "Seçim & Tasarım", description: "IFRA standartlarına uygun içerikler titizlikle seçilir.", enabled: true, order: 1 }, { id: "doc-step-test", title: "Üretim & Test", description: "Her parti üretim, kalite kontrol ve güvenlik testlerinden geçer.", enabled: true, order: 2 }, { id: "doc-step-delivery", title: "Sizinle Buluşma", description: "Güvenli paketleme ile kapınıza kadar ulaşır.", enabled: true, order: 3 }] },
   faq: { id: "documents-faq", type: "documents-faq", enabled: true, order: 4, title: "Sıkça Sorulan Sorular", items: [{ id: "doc-faq-ifra", question: "Parfümleriniz IFRA standartlarına uygun mu?", answer: "Tüm formülasyonlarımız uluslararası IFRA standartları gözetilerek hazırlanır.", enabled: true, order: 1 }, { id: "doc-faq-ministry", question: "Sağlık Bakanlığı onayı nedir?", answer: "Üretim ve içerik süreçlerimizin yürürlükteki ilgili mevzuata uygunluğunu ifade eder.", enabled: true, order: 2 }, { id: "doc-faq-content", question: "Ürünlerinizde hangi içerikler kullanılmaktadır?", answer: "İçerik bilgileri ürün detaylarında şeffaf biçimde sunulur.", enabled: true, order: 3 }, { id: "doc-faq-allergy", question: "Alerjik reaksiyon riski var mı?", answer: "Hassasiyet durumunda kullanımdan önce içerik listesini incelemenizi öneririz.", enabled: true, order: 4 }, { id: "doc-faq-return", question: "İade ve değişim süreciniz nasıl işliyor?", answer: "Müşteri hizmetlerimiz, uygun koşullardaki talebiniz için size yardımcı olur.", enabled: true, order: 5 }] },
   stats: { id: "documents-stats", type: "documents-stats", enabled: true, order: 5, items: [{ id: "stat-original", value: "%100", label: "Orijinal İçerik", enabled: true, order: 1 }, { id: "stat-tests", value: "25+", label: "Kalite Testi", enabled: true, order: 2 }, { id: "stat-support", value: "7/24", label: "Müşteri Desteği", enabled: true, order: 3 }, { id: "stat-ssl", value: "256-Bit", label: "SSL Koruma", enabled: true, order: 4 }] },
+};
+
+export const mockBlogPage: BlogPageData = {
+  seo: { metaTitle: "Koku Rehberi | Senior Veor Collection", metaDescription: "Parfüm notaları, kullanım önerileri ve koku dünyasından ilham veren rehberler." },
+  hero: { id: "blog-hero", type: "blog-hero", enabled: true, order: 1, eyebrow: "Koku Rehberi", title: "Kokunuzu Keşfedin, İz Bırakın", description: "Parfüm; bir anıyı canlandırır, bir duyguyu yansıtır ve bir imzaya dönüşür. Koku rehberimizle notaların büyülü dünyasına adım atın.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "Senior Veor parfüm şişesi", width: 1536, height: 1024 }, cta: { label: "Tüm Yazıları Keşfet", href: "/blog#yazilar" } },
+  newsletter: { id: "blog-newsletter", type: "blog-newsletter", enabled: true, order: 2, title: "Koku Dünyasından Haberdar Olun", description: "Yeni yazılar, özel içerikler ve kampanyalardan ilk siz haberdar olun." },
 };
 
 export const mockCertificates: Certificate[] = [

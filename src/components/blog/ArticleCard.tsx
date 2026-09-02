@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { Clock3 } from "lucide-react";
+import type { BlogPost } from "@/domain/models";
+import { Media } from "@/components/ui/Media";
+
+export function ArticleCard({ featured = false, post }: { featured?: boolean; post: BlogPost }) {
+  return <article className={featured ? "grid overflow-hidden border border-brand-line bg-brand-paper md:grid-cols-[1.3fr_1fr]" : "overflow-hidden border border-brand-line bg-brand-paper"}><Link className="block overflow-hidden" href={`/blog/${post.slug}`}><Media asset={post.coverImage} className={featured ? "h-full min-h-60 object-cover transition-transform duration-300 hover:scale-[1.03]" : "aspect-[16/10] object-cover transition-transform duration-300 hover:scale-[1.03]"} sizes={featured ? "(min-width: 768px) 60vw, 100vw" : "(min-width: 1024px) 25vw, 50vw"} /></Link><div className={featured ? "flex flex-col justify-center p-7 lg:p-10" : "p-5"}><p className="text-xs font-semibold tracking-[0.12em] text-brand-gold uppercase">Öne Çıkan Yazı</p><Link className="mt-3 block" href={`/blog/${post.slug}`}><h2 className={featured ? "font-display text-4xl leading-none text-brand-ink" : "font-display text-2xl leading-tight text-brand-ink"}>{post.title}</h2></Link><p className="mt-3 text-sm leading-6 text-brand-muted">{post.excerpt}</p><div className="mt-5 flex items-center gap-2 text-xs text-brand-muted"><Clock3 aria-hidden="true" className="size-4 text-brand-gold" strokeWidth={1.4} />{post.readingTimeMinutes} dk okuma</div><Link className="mt-5 inline-flex border-b border-brand-gold pb-1 text-xs font-semibold tracking-[0.08em] text-brand-teal uppercase" href={`/blog/${post.slug}`}>Yazıyı Oku</Link></div></article>;
+}

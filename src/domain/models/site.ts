@@ -181,3 +181,9 @@ export interface DocumentsPageData {
   faq: { id: string; type: "documents-faq"; enabled: boolean; order: number; title: string; items: FAQItem[] };
   stats: { id: string; type: "documents-stats"; enabled: boolean; order: number; items: { id: string; value: string; label: string; enabled: boolean; order: number }[] };
 }
+
+export interface BlogPageData {
+  seo: SEOData;
+  hero: { id: string; type: "blog-hero"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; cta: CTA };
+  newsletter: { id: string; type: "blog-newsletter"; enabled: boolean; order: number; title: string; description: string };
+}
