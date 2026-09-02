@@ -11,6 +11,7 @@ export function createContentService(
     getBlogPostBySlug: (slug: string) => blogRepository.getBySlug(slug),
     getFeaturedBlogPost: () => blogRepository.getFeatured(),
     getHomePage: () => pageRepository.getHomePage(),
+    getCatalogPage: () => pageRepository.getCatalogPage(),
     getSiteSettings: () => settingsRepository.getSiteSettings(),
     getCertificates: () => certificateRepository.getAll(),
   };

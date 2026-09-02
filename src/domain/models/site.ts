@@ -8,6 +8,7 @@ import type {
   PageSectionBase,
   SEOData,
 } from "./common";
+import type { ScentFamily } from "./product";
 
 export interface ContactDetails {
   phone: string;
@@ -115,4 +116,39 @@ export interface HomePageData {
   ingredients: HomeIngredientsSection;
   packaging: HomePackagingSection;
   newsletter: HomeNewsletterSection;
+}
+
+export interface CatalogScentFamily {
+  id: ScentFamily;
+  label: string;
+  description: string;
+  image: MediaAsset;
+  enabled: boolean;
+  order: number;
+}
+
+export interface CatalogPageData {
+  seo: SEOData;
+  hero: {
+    id: string;
+    type: "catalog-hero";
+    enabled: boolean;
+    order: number;
+    eyebrow: string;
+    title: string;
+    description: string;
+    image: MediaAsset;
+  };
+  scentFamilies: {
+    id: string;
+    type: "scent-families";
+    enabled: boolean;
+    order: number;
+    title: string;
+    items: CatalogScentFamily[];
+  };
+  listings: {
+    collection: { eyebrow: string; title: string; description: string };
+    perfumes: { eyebrow: string; title: string; description: string };
+  };
 }

@@ -27,7 +27,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   const siteSettings = await contentService.getSiteSettings();
 
   return (
-    <html lang="tr">
+    <html data-scroll-behavior="smooth" lang="tr">
       <body className={`${displayFont.variable} ${bodyFont.variable}`}>
         <Header announcements={siteSettings.announcements} navigation={siteSettings.navigation} siteName={siteSettings.siteName} />
         {children}

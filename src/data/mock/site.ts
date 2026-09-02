@@ -1,4 +1,4 @@
-import type { Certificate, HomePageData, SiteSettings } from "@/domain/models";
+import type { CatalogPageData, Certificate, HomePageData, SiteSettings } from "@/domain/models";
 import { placeholderMedia } from "./media";
 
 export const mockSiteSettings: SiteSettings = {
@@ -41,6 +41,23 @@ export const mockHomePage: HomePageData = {
   ingredients: { id: "home-ingredients", type: "ingredients", enabled: true, order: 5, title: "Notaların İzini Keşfedin", items: ["Bergamot", "Gül", "Oud", "Amber", "Misk", "Vanilya", "Sandal Ağacı", "Paçuli", "Yasemin"].map((name, order) => ({ id: `ingredient-${order}`, name, image: placeholderMedia(name, order % 2 === 0 ? "gold" : "ivory", 200, 150), enabled: true, order })) },
   packaging: { id: "home-packaging", type: "packaging", enabled: true, order: 6, title: "Her Şişe, Zarafetin İmzasını Taşır", description: "Özenle tasarlanan şişeler ve premium ambalajlarla koku deneyimini bir üst seviyeye taşıyoruz.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "Zarif parfüm kutusu ve şişesi", width: 1536, height: 1024 }, cta: { label: "Koleksiyonu Keşfet", href: "/koleksiyon" }, benefits: [{ id: "packaging-ingredients", title: "Premium İçerikler", description: "Seçkin ve kaliteli hammaddeler.", icon: "sparkles", enabled: true, order: 1 }, { id: "packaging-craft", title: "Ustalıkla Üretim", description: "Titizlikle geliştirilen formüller.", icon: "badge-check", enabled: true, order: 2 }, { id: "packaging-design", title: "Zarif Ambalaj", description: "Lüks detaylarla sunum.", icon: "heart-handshake", enabled: true, order: 3 }] },
   newsletter: { id: "home-newsletter", type: "newsletter", enabled: true, order: 7, title: "Yeniliklerden Haberdar Olun", description: "Özel kampanyalar, yeni koleksiyonlar ve parfüm ipuçları e-posta kutunuzda." },
+};
+
+export const mockCatalogPage: CatalogPageData = {
+  seo: { metaTitle: "Koleksiyon | Senior Veor Collection", metaDescription: "Senior Veor Collection'ın seçkin parfüm koleksiyonunu keşfedin." },
+  hero: { id: "catalog-hero", type: "catalog-hero", enabled: true, order: 1, eyebrow: "Zarafetin İmzası", title: "Koleksiyon Parfümler", description: "Zarafeti ve gücü aynı şişede buluşturan, her anınıza eşlik edecek seçkin parfümler.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "İpek fon üzerinde parfüm şişesi ve kutusu", width: 1536, height: 1024 } },
+  scentFamilies: { id: "catalog-scent-families", type: "scent-families", enabled: true, order: 2, title: "Koleksiyonu Koku Ailelerine Göre Keşfet", items: [
+    { id: "floral", label: "Çiçeksi", description: "Romantik & zarif", image: placeholderMedia("Çiçeksi", "ivory", 320, 200), enabled: true, order: 1 },
+    { id: "woody", label: "Odunsu", description: "Sıcak & doğal", image: placeholderMedia("Odunsu", "teal", 320, 200), enabled: true, order: 2 },
+    { id: "amber", label: "Amber", description: "Zengin & büyüleyici", image: placeholderMedia("Amber", "gold", 320, 200), enabled: true, order: 3 },
+    { id: "oriental", label: "Oryantal", description: "Tutkulu & gizemli", image: placeholderMedia("Oryantal", "gold", 320, 200), enabled: true, order: 4 },
+    { id: "fresh", label: "Fresh", description: "Ferahlık & enerji", image: placeholderMedia("Fresh", "teal", 320, 200), enabled: true, order: 5 },
+    { id: "unisex", label: "Unisex", description: "Dengeli & zamansız", image: placeholderMedia("Unisex", "ivory", 320, 200), enabled: true, order: 6 },
+  ] },
+  listings: {
+    collection: { eyebrow: "Koku Ailesi", title: "Koleksiyondaki Tüm Parfümler", description: "İmza kokunuzu, notaların karakterine göre keşfedin." },
+    perfumes: { eyebrow: "Parfümler", title: "Size Eşlik Edecek Koku", description: "Her ruh hâline ve ana uyumlanan seçkin eau de parfum koleksiyonu." },
+  },
 };
 
 export const mockCertificates: Certificate[] = [
