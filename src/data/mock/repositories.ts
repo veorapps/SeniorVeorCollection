@@ -7,7 +7,7 @@ import type {
 } from "@/domain/repositories";
 import type { Product, ProductFilter, ProductSort } from "@/domain/models";
 import { mockBlogCategories, mockBlogPosts } from "./blog";
-import { mockAboutPage, mockBlogPage, mockCatalogPage, mockCertificates, mockDocumentsPage, mockHomePage, mockSiteSettings } from "./site";
+import { mockAboutPage, mockBlogPage, mockCatalogPage, mockCertificates, mockContactPage, mockDocumentsPage, mockHomePage, mockSiteSettings } from "./site";
 import { mockProducts } from "./products";
 
 function sortProducts(products: Product[], sort: ProductSort = "newest"): Product[] {
@@ -40,6 +40,6 @@ export const mockBlogRepository: BlogRepository = {
   async getCategories() { return mockBlogCategories.filter((category) => category.enabled).sort((a, b) => a.order - b.order); },
 };
 
-export const mockPageRepository: PageRepository = { async getHomePage() { return mockHomePage; }, async getCatalogPage() { return mockCatalogPage; }, async getAboutPage() { return mockAboutPage; }, async getDocumentsPage() { return mockDocumentsPage; }, async getBlogPage() { return mockBlogPage; } };
+export const mockPageRepository: PageRepository = { async getHomePage() { return mockHomePage; }, async getCatalogPage() { return mockCatalogPage; }, async getAboutPage() { return mockAboutPage; }, async getDocumentsPage() { return mockDocumentsPage; }, async getBlogPage() { return mockBlogPage; }, async getContactPage() { return mockContactPage; } };
 export const mockSettingsRepository: SettingsRepository = { async getSiteSettings() { return mockSiteSettings; } };
 export const mockCertificateRepository: CertificateRepository = { async getAll() { return mockCertificates.filter((certificate) => certificate.enabled); } };

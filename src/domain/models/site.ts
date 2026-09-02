@@ -187,3 +187,11 @@ export interface BlogPageData {
   hero: { id: string; type: "blog-hero"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; cta: CTA };
   newsletter: { id: string; type: "blog-newsletter"; enabled: boolean; order: number; title: string; description: string };
 }
+
+export interface ContactPageData {
+  seo: SEOData;
+  hero: { id: string; type: "contact-hero"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; cta: CTA };
+  helpItems: BenefitItem[];
+  faq: { id: string; type: "contact-faq"; enabled: boolean; order: number; title: string; items: FAQItem[] };
+  trustBar: { id: string; type: "contact-trust"; enabled: boolean; order: number; items: BenefitItem[] };
+}

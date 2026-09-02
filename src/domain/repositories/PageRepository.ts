@@ -1,4 +1,4 @@
-import type { AboutPageData, BlogPageData, CatalogPageData, DocumentsPageData, HomePageData } from "@/domain/models";
+import type { AboutPageData, BlogPageData, CatalogPageData, ContactPageData, DocumentsPageData, HomePageData } from "@/domain/models";
 
 export interface PageRepository {
   getHomePage(): Promise<HomePageData>;
@@ -6,4 +6,5 @@ export interface PageRepository {
   getAboutPage(): Promise<AboutPageData>;
   getDocumentsPage(): Promise<DocumentsPageData>;
   getBlogPage(): Promise<BlogPageData>;
+  getContactPage(): Promise<ContactPageData>;
 }

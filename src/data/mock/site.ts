@@ -1,4 +1,4 @@
-import type { AboutPageData, BlogPageData, CatalogPageData, Certificate, DocumentsPageData, HomePageData, SiteSettings } from "@/domain/models";
+import type { AboutPageData, BlogPageData, CatalogPageData, Certificate, ContactPageData, DocumentsPageData, HomePageData, SiteSettings } from "@/domain/models";
 import { placeholderMedia } from "./media";
 
 export const mockSiteSettings: SiteSettings = {
@@ -84,6 +84,14 @@ export const mockBlogPage: BlogPageData = {
   seo: { metaTitle: "Koku Rehberi | Senior Veor Collection", metaDescription: "Parfüm notaları, kullanım önerileri ve koku dünyasından ilham veren rehberler." },
   hero: { id: "blog-hero", type: "blog-hero", enabled: true, order: 1, eyebrow: "Koku Rehberi", title: "Kokunuzu Keşfedin, İz Bırakın", description: "Parfüm; bir anıyı canlandırır, bir duyguyu yansıtır ve bir imzaya dönüşür. Koku rehberimizle notaların büyülü dünyasına adım atın.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "Senior Veor parfüm şişesi", width: 1536, height: 1024 }, cta: { label: "Tüm Yazıları Keşfet", href: "/blog#yazilar" } },
   newsletter: { id: "blog-newsletter", type: "blog-newsletter", enabled: true, order: 2, title: "Koku Dünyasından Haberdar Olun", description: "Yeni yazılar, özel içerikler ve kampanyalardan ilk siz haberdar olun." },
+};
+
+export const mockContactPage: ContactPageData = {
+  seo: { metaTitle: "İletişim | Senior Veor Collection", metaDescription: "Senior Veor Collection müşteri hizmetleri ve iletişim bilgileri." },
+  hero: { id: "contact-hero", type: "contact-hero", enabled: true, order: 1, eyebrow: "Bizimle İletişime Geçin", title: "Sizi Dinlemek Bizim İçin Önemli", description: "Sorularınızı yanıtlamak, önerilerinizi dinlemek ve size en iyi deneyimi sunmak için buradayız.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "Senior Veor parfüm koleksiyonu", width: 1536, height: 1024 }, cta: { label: "Bize Ulaşın", href: "#iletisim-formu" } },
+  helpItems: [{ id: "help-order", title: "Sipariş Desteği", description: "Sipariş durumu, ödeme ve kargo hakkında destek alın.", icon: "truck", enabled: true, order: 1 }, { id: "help-return", title: "İade & Değişim", description: "İade, değişim ve süreçler hakkında bilgi alın.", icon: "heart-handshake", enabled: true, order: 2 }, { id: "help-product", title: "Ürün Soruları", description: "Parfümlerimiz ve içerikleri hakkında sorularınız.", icon: "sparkles", enabled: true, order: 3 }, { id: "help-partnership", title: "İş Birliği", description: "Markamızla iş birliği fırsatları için ulaşın.", icon: "badge-check", enabled: true, order: 4 }],
+  faq: { id: "contact-faq", type: "contact-faq", enabled: true, order: 2, title: "Sıkça Sorulan Sorular", items: [{ id: "contact-faq-1", question: "Siparişim ne zaman kargoya verilir?", answer: "Siparişiniz onaylandıktan sonra en kısa sürede kargoya teslim edilir.", enabled: true, order: 1 }, { id: "contact-faq-2", question: "İade ve değişim süreci nasıl işliyor?", answer: "Uygun koşullardaki talebiniz için müşteri hizmetlerimiz yardımcı olur.", enabled: true, order: 2 }, { id: "contact-faq-3", question: "Hangi ödeme yöntemlerini kullanabilirim?", answer: "Güvenli ödeme altyapımız üzerinden desteklenen kartlarla ödeme yapabilirsiniz.", enabled: true, order: 3 }, { id: "contact-faq-4", question: "Ürünleriniz orijinal mi?", answer: "Tüm ürünlerimiz kalite kontrolleri ile sunulur.", enabled: true, order: 4 }] },
+  trustBar: { id: "contact-trust", type: "contact-trust", enabled: true, order: 3, items: [{ id: "contact-trust-payment", title: "Güvenli Alışveriş", description: "256-bit SSL ile korumalı ödeme.", icon: "shield-check", enabled: true, order: 1 }, { id: "contact-trust-shipping", title: "Ücretsiz Kargo", description: "750₺ ve üzeri siparişlerde.", icon: "truck", enabled: true, order: 2 }, { id: "contact-trust-return", title: "Kolay İade", description: "14 gün içinde kolay iade.", icon: "heart-handshake", enabled: true, order: 3 }, { id: "contact-trust-support", title: "Müşteri Desteği", description: "Uzman ekibimizle yanınızdayız.", icon: "badge-check", enabled: true, order: 4 }] },
 };
 
 export const mockCertificates: Certificate[] = [

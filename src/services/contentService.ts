@@ -16,6 +16,7 @@ export function createContentService(
     getAboutPage: () => pageRepository.getAboutPage(),
     getDocumentsPage: () => pageRepository.getDocumentsPage(),
     getBlogPage: () => pageRepository.getBlogPage(),
+    getContactPage: () => pageRepository.getContactPage(),
     getSiteSettings: () => settingsRepository.getSiteSettings(),
     getCertificates: () => certificateRepository.getAll(),
   };
