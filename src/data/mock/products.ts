@@ -42,6 +42,11 @@ function toProduct(seed: ProductSeed): Product {
     currency: "TRY",
     rating: seed.rating,
     reviewCount: seed.reviewCount,
+    reviews: [
+      { id: `${seed.slug}-review-1`, productId: `product-${seed.slug}`, authorName: "Melis A.", rating: 5, body: "İlk sıkıldığında ferah ve zarif; zamanla tenle bütünleşen çok dengeli bir koku.", createdAt: "2026-08-29T12:00:00.000Z", verifiedPurchase: true, helpfulCount: 12 },
+      { id: `${seed.slug}-review-2`, productId: `product-${seed.slug}`, authorName: "Serkan K.", rating: 5, body: "Gün boyu kalıcılığı etkileyici. Şişe tasarımı da en az kokusu kadar özenli.", createdAt: "2026-08-27T12:00:00.000Z", verifiedPurchase: true, helpfulCount: 7 },
+      { id: `${seed.slug}-review-3`, productId: `product-${seed.slug}`, authorName: "Ece T.", rating: 4, body: "Zarif, temiz ve sofistike. Her mevsimde rahatça kullanabileceğim bir imza koku.", createdAt: "2026-08-20T12:00:00.000Z", verifiedPurchase: false, helpfulCount: 4 },
+    ],
     inStock: true,
     badges: seed.badges,
     scentFamilies: seed.families,
@@ -56,7 +61,7 @@ function toProduct(seed: ProductSeed): Product {
       { id: `${seed.slug}-50`, label: "50 ML", volumeMl: 50, price: 2490, currency: "TRY", inStock: true },
       { id: `${seed.slug}-100`, label: "100 ML", volumeMl: 100, price: 3090, currency: "TRY", inStock: true },
     ],
-    images: [placeholderMedia(seed.name, seed.tone)],
+    images: [placeholderMedia(seed.name, seed.tone), placeholderMedia(`${seed.name} şişe detayı`, "ivory", 900, 1200), placeholderMedia(`${seed.name} kutu detayı`, "gold", 900, 1200)],
     benefits: [
       { id: `${seed.slug}-benefit-1`, title: "Zarif ve unutulmaz", description: "Dengeli nota geçişleriyle iz bırakan kompozisyon.", icon: "sparkles", enabled: true, order: 1 },
       { id: `${seed.slug}-benefit-2`, title: "Uzun süre kalıcı", description: "Gün boyu etkileyici performans.", icon: "clock-3", enabled: true, order: 2 },

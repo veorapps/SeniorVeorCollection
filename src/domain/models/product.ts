@@ -1,3 +1,4 @@
+import type { Review } from "./commerce";
 import type { BenefitItem, CurrencyCode, FAQItem, MediaAsset, SEOData } from "./common";
 
 export type ScentFamily = "floral" | "woody" | "amber" | "oriental" | "fresh" | "unisex";
@@ -39,6 +40,7 @@ export interface Product {
   currency: CurrencyCode;
   rating: number;
   reviewCount: number;
+  reviews: Review[];
   inStock: boolean;
   badges: ProductBadge[];
   scentFamilies: ScentFamily[];
