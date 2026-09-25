@@ -68,7 +68,13 @@ export interface HomeProductSection extends PageSectionBase<"featured-products">
   eyebrow: string;
   title: string;
   cta: CTA;
-  productIds: string[];
+  items: {
+    id: string;
+    name: string;
+    productId?: string;
+    image: MediaAsset;
+    imageCrop?: { x: number; y: number; width: number; height: number };
+  }[];
 }
 
 export interface HomeScentDiscoverySection extends PageSectionBase<"scent-discovery"> {

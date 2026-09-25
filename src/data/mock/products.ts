@@ -61,7 +61,7 @@ function toProduct(seed: ProductSeed): Product {
       { id: `${seed.slug}-50`, label: "50 ML", volumeMl: 50, price: 2490, currency: "TRY", inStock: true },
       { id: `${seed.slug}-100`, label: "100 ML", volumeMl: 100, price: 3090, currency: "TRY", inStock: true },
     ],
-    images: [placeholderMedia(seed.name, seed.tone), placeholderMedia(`${seed.name} şişe detayı`, "ivory", 900, 1200), placeholderMedia(`${seed.name} kutu detayı`, "gold", 900, 1200)],
+    images: [seed.slug === "if-only" ? { src: "/images/products/if-only/if-only-100ml-black-cap.png", alt: "If Only 100 ml siyah kapaklı parfüm şişesi", width: 1024, height: 1536 } : placeholderMedia(seed.name, seed.tone), placeholderMedia(`${seed.name} şişe detayı`, "ivory", 900, 1200), placeholderMedia(`${seed.name} kutu detayı`, "gold", 900, 1200)],
     benefits: [
       { id: `${seed.slug}-benefit-1`, title: "Zarif ve unutulmaz", description: "Dengeli nota geçişleriyle iz bırakan kompozisyon.", icon: "sparkles", enabled: true, order: 1 },
       { id: `${seed.slug}-benefit-2`, title: "Uzun süre kalıcı", description: "Gün boyu etkileyici performans.", icon: "clock-3", enabled: true, order: 2 },
