@@ -151,6 +151,7 @@ export interface CatalogPageData {
     title: string;
     description: string;
     image: MediaAsset;
+    highlights?: { id: string; label: string; enabled: boolean; order: number }[];
   };
   scentFamilies: {
     id: string;

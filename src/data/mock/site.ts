@@ -62,7 +62,10 @@ export const mockHomePage: HomePageData = {
 
 export const mockCatalogPage: CatalogPageData = {
   seo: { metaTitle: "Koleksiyon | Senior Veor Collection", metaDescription: "Senior Veor Collection'ın seçkin parfüm koleksiyonunu keşfedin." },
-  hero: { id: "catalog-hero", type: "catalog-hero", enabled: true, order: 1, eyebrow: "Zarafetin İmzası", title: "Koleksiyon Parfümler", description: "Zarafeti ve gücü aynı şişede buluşturan, her anınıza eşlik edecek seçkin parfümler.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "İpek fon üzerinde parfüm şişesi ve kutusu", width: 1536, height: 1024 } },
+  hero: { id: "catalog-hero", type: "catalog-hero", enabled: true, order: 1, eyebrow: "Zarafetin İmzası", title: "Koleksiyon Parfümler", description: "Senior Veor Collection, zarafeti ve gücü aynı şişede buluşturan premium parfümler sunar.", image: { src: "/images/collection/hero-if-only-v1.png", alt: "İpek ve traverten üzerinde If Only parfüm şişesi ve kutusu", width: 2172, height: 724 }, highlights: [
+    { id: "lasting", label: "Uzun Süre Kalıcılık", enabled: true, order: 1 },
+    { id: "essences", label: "Premium Esanslar", enabled: true, order: 2 },
+  ] },
   scentFamilies: { id: "catalog-scent-families", type: "scent-families", enabled: true, order: 2, title: "Koleksiyonu Koku Ailelerine Göre Keşfet", items: [
     { id: "floral", label: "Çiçeksi", description: "Romantik & zarif", image: placeholderMedia("Çiçeksi", "ivory", 320, 200), enabled: true, order: 1 },
     { id: "woody", label: "Odunsu", description: "Sıcak & doğal", image: placeholderMedia("Odunsu", "teal", 320, 200), enabled: true, order: 2 },
