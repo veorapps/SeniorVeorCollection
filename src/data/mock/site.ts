@@ -45,7 +45,17 @@ export const mockHomePage: HomePageData = {
     { id: "featured-before", name: "Before", image: { src: "/images/products/group-five.jpg", alt: "Before parfüm şişesi", width: 900, height: 1600 }, imageCrop: { x: 706, y: 770, width: 185, height: 365 } },
   ] },
   scentDiscovery: { id: "home-discovery", type: "scent-discovery", enabled: true, order: 4, title: "Kokunuzu Keşfedin", description: "Doğanın en değerli notaları, ustalıkla bir araya geldi. Size en uygun kokuyu keşfedin.", cta: { label: "Keşfetmeye Başla", href: "/koleksiyon" }, image: { src: "/images/home/scent-pyramid-v1.png", alt: "Narenciye, çiçek ve odunsu amber notalarından oluşan koku piramidi", width: 1254, height: 1254 }, topNotes: ["Bergamot", "Mandarin", "Pembe Biber"], middleNotes: ["Gül", "Yasemin", "Menekşe"], baseNotes: ["Oud", "Amber", "Misk", "Vanilya"], longevityLabel: "8–10 Saat", longevityLevel: 4, intensityLabel: "Yüksek", intensityLevel: 4, meterSegments: 6, usageTimes: ["day", "night"], seasons: ["summer"] },
-  ingredients: { id: "home-ingredients", type: "ingredients", enabled: true, order: 5, title: "Notaların İzini Keşfedin", items: ["Bergamot", "Gül", "Oud", "Amber", "Misk", "Vanilya", "Sandal Ağacı", "Paçuli", "Yasemin"].map((name, order) => ({ id: `ingredient-${order}`, name, image: placeholderMedia(name, order % 2 === 0 ? "gold" : "ivory", 200, 150), enabled: true, order })) },
+  ingredients: { id: "home-ingredients", type: "ingredients", enabled: true, order: 5, title: "Notaların İzini Keşfedin", items: [
+    { name: "Bergamot", slug: "bergamot" },
+    { name: "Gül", slug: "gul" },
+    { name: "Oud", slug: "oud" },
+    { name: "Amber", slug: "amber" },
+    { name: "Misk", slug: "misk" },
+    { name: "Vanilya", slug: "vanilya" },
+    { name: "Sandal Ağacı", slug: "sandal-agaci" },
+    { name: "Paçuli", slug: "paculi" },
+    { name: "Yasemin", slug: "yasemin" },
+  ].map(({ name, slug }, order) => ({ id: `ingredient-${slug}`, name, image: { src: `/images/notes/${slug}.png`, alt: `${name} koku notası`, width: 1254, height: 1254 }, enabled: true, order })) },
   packaging: { id: "home-packaging", type: "packaging", enabled: true, order: 6, title: "Her Şişe, Zarafetin İmzasını Taşır", description: "Özenle tasarlanan şişeler ve premium ambalajlarla koku deneyimini bir üst seviyeye taşıyoruz.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "Zarif parfüm kutusu ve şişesi", width: 1536, height: 1024 }, cta: { label: "Koleksiyonu Keşfet", href: "/koleksiyon" }, benefits: [{ id: "packaging-ingredients", title: "Premium İçerikler", description: "Seçkin ve kaliteli hammaddeler.", icon: "sparkles", enabled: true, order: 1 }, { id: "packaging-craft", title: "Ustalıkla Üretim", description: "Titizlikle geliştirilen formüller.", icon: "badge-check", enabled: true, order: 2 }, { id: "packaging-design", title: "Zarif Ambalaj", description: "Lüks detaylarla sunum.", icon: "heart-handshake", enabled: true, order: 3 }] },
   newsletter: { id: "home-newsletter", type: "newsletter", enabled: true, order: 7, title: "Yeniliklerden Haberdar Olun", description: "Özel kampanyalar, yeni koleksiyonlar ve parfüm ipuçları e-posta kutunuzda." },
 };
