@@ -29,6 +29,7 @@ export const mockSiteSettings: SiteSettings = {
   contact: { phone: "+90 850 123 45 67", email: "info@seniorveorcollection.com", address: "Maslak Mah. Büyükdere Cad. No: 123 Sarıyer / İstanbul", workingHours: ["Pazartesi – Cuma: 09:00 – 18:00"] },
   socialLinks: [{ id: "instagram", label: "Instagram", href: "#", icon: "instagram" }, { id: "facebook", label: "Facebook", href: "#", icon: "facebook" }, { id: "youtube", label: "YouTube", href: "#", icon: "youtube" }, { id: "tiktok", label: "TikTok", href: "#", icon: "music-2" }],
   paymentProviders: ["VISA", "Mastercard", "Troy", "iyzico"],
+  paymentSecurityText: "ile güvenli ödeme",
   copyright: "© 2026 Senior Veor Collection. Tüm hakları saklıdır.",
 };
 

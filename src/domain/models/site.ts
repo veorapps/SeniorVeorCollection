@@ -38,6 +38,7 @@ export interface SiteSettings {
   contact: ContactDetails;
   socialLinks: SocialLink[];
   paymentProviders: string[];
+  paymentSecurityText?: string;
   copyright: string;
 }
 
