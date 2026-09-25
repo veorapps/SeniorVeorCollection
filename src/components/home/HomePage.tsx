@@ -4,7 +4,6 @@ import type { HomePageData, Product } from "@/domain/models";
 import { Container } from "@/components/ui/Container";
 import { Media } from "@/components/ui/Media";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Button } from "@/components/ui/Button";
 import { NewsletterBanner } from "@/components/layout/NewsletterBanner";
 import { TrustBar } from "@/components/layout/TrustBar";
 import { ProductCarousel } from "@/components/product/ProductCarousel";
@@ -22,11 +21,23 @@ export function HomePage({ data, featuredProducts }: HomePageProps) {
 
   return (
     <main>
-      <section className="relative isolate min-h-[25rem] overflow-hidden border-b border-brand-line bg-brand-sand md:min-h-[26rem] lg:min-h-[27rem]">
-        <Media asset={hero.desktopImage} className="absolute inset-0 h-full w-full object-cover object-[65%_center]" loading="eager" sizes="100vw" />
-        <div className="absolute inset-0 bg-linear-to-r from-brand-ivory via-brand-ivory/82 to-transparent" />
-        <Container className="relative flex min-h-[25rem] items-center py-10 md:min-h-[26rem] lg:min-h-[27rem]">
-          <div className="max-w-[25rem]"><p className="text-[0.625rem] font-semibold tracking-[0.22em] text-brand-gold uppercase">{hero.eyebrow}</p><h1 className="mt-3 font-display text-[2.9rem] leading-[0.9] tracking-[-0.028em] text-brand-ink sm:text-[3.45rem] lg:text-[4rem]">{hero.title}</h1><p className="mt-4 max-w-sm text-[0.8125rem] leading-5 text-brand-muted sm:text-sm">{hero.description}</p><div className="mt-6 flex flex-wrap gap-3"><Button>{hero.primaryCTA.label}<ArrowRight aria-hidden="true" className="ml-2 size-4" strokeWidth={1.5} /></Button>{hero.secondaryCTA ? <Link className="inline-flex min-h-11 items-center border border-brand-gold px-5 text-[0.6875rem] font-semibold tracking-[0.1em] text-brand-teal uppercase transition-colors hover:bg-brand-paper" href={hero.secondaryCTA.href}>{hero.secondaryCTA.label}</Link> : null}</div><div className="mt-7 flex items-center gap-3 text-[0.625rem] tracking-[0.14em] text-brand-muted"><span>01</span><span className="h-px w-20 bg-brand-gold" /><span>03</span></div></div>
+      <section className="relative isolate min-h-[53rem] overflow-hidden border-b border-brand-line bg-[#f7eee5] sm:min-h-[22rem] xl:min-h-[28rem]">
+        <picture className="absolute inset-0 block">
+          {hero.mobileImage ? <source media="(max-width: 639px)" srcSet={hero.mobileImage.src} /> : null}
+          <Media asset={hero.desktopImage} className="absolute inset-0 h-full w-full translate-y-28 object-cover object-center sm:translate-y-0" loading="eager" sizes="100vw" />
+        </picture>
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[25rem] bg-linear-to-b from-[#fffaf4]/80 via-[#fffaf4]/45 to-transparent sm:inset-y-0 sm:right-auto sm:h-auto sm:w-[54%] sm:bg-linear-to-r sm:from-[#fffaf4]/45 sm:via-[#fffaf4]/20 sm:to-transparent" />
+        <Container className="relative flex min-h-[53rem] items-start pt-11 pb-8 sm:min-h-[22rem] sm:items-center sm:py-7 xl:min-h-[28rem]">
+          <div className="max-w-[34rem] lg:ml-9 xl:ml-0">
+            <p className="text-[0.625rem] font-semibold tracking-[0.22em] text-brand-gold uppercase">{hero.eyebrow}</p>
+            <h1 className="mt-3 max-w-[32rem] whitespace-pre-line font-display text-[2.55rem] leading-[0.94] tracking-[0.015em] text-brand-ink sm:text-[2.65rem] xl:text-[3.1rem]">{hero.title}</h1>
+            <p className="mt-4 max-w-[22rem] text-[0.8125rem] leading-[1.5] text-brand-muted sm:text-sm">{hero.description}</p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link className="inline-flex min-h-11 items-center justify-center border border-brand-teal bg-brand-teal px-5 text-xs font-semibold tracking-[0.08em] text-brand-ivory uppercase transition-colors hover:border-brand-teal-hover hover:bg-brand-teal-hover" href={hero.primaryCTA.href}>{hero.primaryCTA.label}<ArrowRight aria-hidden="true" className="ml-2 size-4" strokeWidth={1.5} /></Link>
+              {hero.secondaryCTA ? <Link className="inline-flex min-h-11 items-center border border-brand-gold px-5 text-[0.6875rem] font-semibold tracking-[0.1em] text-brand-teal uppercase transition-colors hover:bg-brand-paper" href={hero.secondaryCTA.href}>{hero.secondaryCTA.label}</Link> : null}
+            </div>
+            <div className="mt-6 hidden items-center gap-3 text-[0.625rem] tracking-[0.14em] text-brand-muted sm:flex"><span>01</span><span className="h-px w-20 bg-brand-gold" /><span>03</span></div>
+          </div>
         </Container>
       </section>
 
