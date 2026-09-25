@@ -29,23 +29,24 @@ h3,
   font-family: var(--font-display), Georgia, serif;
 }
 
-button,
-input,
-textarea,
-select {
-  font: inherit;
-}
+@layer base {
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    border-radius: var(--sv-radius-sm);
+  }
 
-/* Premium editorial system: rectangular UI surfaces; circular status markers stay circular. */
-button,
-input,
-textarea,
-select,
-article,
-details,
-[role="region"],
-[class*="rounded-"]:not(.rounded-full) {
-  border-radius: 0 !important;
+  article,
+  details,
+  [role="region"] {
+    border-radius: var(--sv-radius-md);
+  }
+
+  a {
+    border-radius: var(--sv-radius-sm);
+  }
 }
 
 button,
