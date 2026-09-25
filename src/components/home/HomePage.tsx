@@ -41,7 +41,7 @@ export function HomePage({ data, featuredProducts }: HomePageProps) {
         </Container>
       </section>
 
-      {data.trustBar.enabled ? <TrustBar items={data.trustBar.items} /> : null}
+      {data.trustBar.enabled ? <TrustBar items={data.trustBar.items} variant="home" /> : null}
 
       {data.featuredProducts.enabled ? <section className="bg-[#fffdf9] py-7 lg:py-8"><Container size="wide"><div className="relative text-center"><p className="text-[0.625rem] font-semibold tracking-[0.26em] text-brand-gold uppercase">{data.featuredProducts.eyebrow}</p><h2 className="mt-1 font-display text-[2rem] leading-none tracking-[0.12em] text-[#705630] uppercase sm:text-[2.35rem]">{data.featuredProducts.title}</h2><Link className="absolute right-0 top-1/2 hidden -translate-y-1/2 items-center gap-2 text-[0.625rem] font-semibold tracking-[0.1em] text-[#705630] uppercase lg:inline-flex" href={data.featuredProducts.cta.href}>{data.featuredProducts.cta.label}<ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.3} /></Link><Link className="mt-3 inline-flex items-center gap-2 text-[0.625rem] font-semibold tracking-[0.1em] text-[#705630] uppercase lg:hidden" href={data.featuredProducts.cta.href}>{data.featuredProducts.cta.label}<ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.3} /></Link></div><div className="mt-4"><ProductCarousel products={featuredProducts} variant="showcase" /></div></Container></section> : null}
 
