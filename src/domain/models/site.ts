@@ -9,7 +9,7 @@ import type {
   PageSectionBase,
   SEOData,
 } from "./common";
-import type { ScentFamily } from "./product";
+import type { ScentFamily, Season, UsageTime } from "./product";
 
 export interface ContactDetails {
   phone: string;
@@ -78,15 +78,20 @@ export interface HomeProductSection extends PageSectionBase<"featured-products">
 }
 
 export interface HomeScentDiscoverySection extends PageSectionBase<"scent-discovery"> {
-  eyebrow: string;
   title: string;
   description: string;
   cta: CTA;
+  image: MediaAsset;
   topNotes: string[];
   middleNotes: string[];
   baseNotes: string[];
   longevityLabel: string;
+  longevityLevel: number;
   intensityLabel: string;
+  intensityLevel: number;
+  meterSegments: number;
+  usageTimes: UsageTime[];
+  seasons: Season[];
 }
 
 export interface HomeIngredient {

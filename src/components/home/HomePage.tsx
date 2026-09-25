@@ -1,12 +1,12 @@
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Clock3, Gift, Sparkles } from "lucide-react";
+import { ArrowRight, BadgeCheck, Gift, Sparkles } from "lucide-react";
 import type { HomePageData, Product } from "@/domain/models";
 import { Container } from "@/components/ui/Container";
 import { Media } from "@/components/ui/Media";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { NewsletterBanner } from "@/components/layout/NewsletterBanner";
 import { TrustBar } from "@/components/layout/TrustBar";
 import { FeaturedProductCarousel } from "./FeaturedProductCarousel";
+import { ScentDiscovery } from "./ScentDiscovery";
 
 const packagingIconByName = { "badge-check": BadgeCheck, "heart-handshake": Gift, sparkles: Sparkles };
 
@@ -45,7 +45,7 @@ export function HomePage({ data, featuredProducts }: HomePageProps) {
 
       {data.featuredProducts.enabled ? <section className="bg-[#fffdf9] py-2"><Container size="wide"><div className="relative text-center"><p className="text-[0.625rem] font-semibold tracking-[0.26em] text-brand-gold uppercase">{data.featuredProducts.eyebrow}</p><h2 className="font-display text-[1.75rem] leading-none tracking-[0.12em] text-[#705630] uppercase sm:text-[2rem]">{data.featuredProducts.title}</h2><Link className="absolute right-0 top-1/2 hidden -translate-y-1/2 items-center gap-2 text-[0.625rem] font-semibold tracking-[0.1em] text-[#705630] uppercase lg:inline-flex" href={data.featuredProducts.cta.href}>{data.featuredProducts.cta.label}<ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.3} /></Link><Link className="mt-2 inline-flex items-center gap-2 text-[0.625rem] font-semibold tracking-[0.1em] text-[#705630] uppercase lg:hidden" href={data.featuredProducts.cta.href}>{data.featuredProducts.cta.label}<ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.3} /></Link></div><div className="mt-2"><FeaturedProductCarousel items={data.featuredProducts.items} products={featuredProducts} /></div></Container></section> : null}
 
-      {data.scentDiscovery.enabled ? <section className="border-y border-brand-line bg-brand-paper py-9 lg:py-10"><Container><div className="grid gap-8 lg:grid-cols-[0.82fr_1.1fr_0.9fr] lg:items-center"><div><SectionHeading description={data.scentDiscovery.description} eyebrow={data.scentDiscovery.eyebrow} title={data.scentDiscovery.title} /><Link className="mt-6 inline-flex min-h-10 items-center bg-brand-teal px-5 text-[0.625rem] font-semibold tracking-[0.1em] text-brand-ivory uppercase" href={data.scentDiscovery.cta.href}>{data.scentDiscovery.cta.label}<ArrowRight aria-hidden="true" className="ml-2 size-4" strokeWidth={1.5} /></Link></div><div className="grid grid-cols-[5.25rem_1fr] items-center gap-5"><div className="space-y-1.5"><div className="h-15 bg-brand-gold/75" /><div className="mx-auto h-17 w-4/5 bg-brand-gold/55" /><div className="mx-auto h-20 w-3/5 bg-brand-gold/35" /></div><div className="space-y-3 text-[0.75rem]"><NoteGroup label="Üst Notalar" notes={data.scentDiscovery.topNotes} /><NoteGroup label="Orta Notalar" notes={data.scentDiscovery.middleNotes} /><NoteGroup label="Dip Notalar" notes={data.scentDiscovery.baseNotes} /></div></div><div className="divide-y divide-brand-line border-y border-brand-line"><Meter icon={<Clock3 aria-hidden="true" className="size-[1.15rem]" strokeWidth={1.4} />} label="Kalıcılık" value={data.scentDiscovery.longevityLabel} /><Meter icon={<Sparkles aria-hidden="true" className="size-[1.15rem]" strokeWidth={1.4} />} label="Yoğunluk" value={data.scentDiscovery.intensityLabel} /></div></div></Container></section> : null}
+      {data.scentDiscovery.enabled ? <ScentDiscovery data={data.scentDiscovery} /> : null}
 
       {data.ingredients.enabled ? <section className="py-6"><Container><div className="flex items-end gap-5"><h2 className="mb-0 max-w-28 font-display text-xl leading-none text-brand-ink">{data.ingredients.title}</h2><div className="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1 [scrollbar-width:none]">{data.ingredients.items.filter((item) => item.enabled).sort((a, b) => a.order - b.order).map((item) => <div className="w-24 shrink-0 border border-brand-line bg-brand-paper p-1 text-center" key={item.id}><Media asset={item.image} className="aspect-[4/3] object-cover" sizes="6rem" /><span className="mt-1.5 block text-[0.625rem] text-brand-ink">{item.name}</span></div>)}</div></div></Container></section> : null}
 
@@ -54,12 +54,4 @@ export function HomePage({ data, featuredProducts }: HomePageProps) {
       {data.newsletter.enabled ? <NewsletterBanner description={data.newsletter.description} title={data.newsletter.title} variant="home" /> : null}
     </main>
   );
-}
-
-function NoteGroup({ label, notes }: { label: string; notes: string[] }) {
-  return <div><h3 className="text-xs font-semibold tracking-[0.1em] text-brand-gold uppercase">{label}</h3><p className="mt-1 leading-5 text-brand-muted">{notes.join(", ")}</p></div>;
-}
-
-function Meter({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
-  return <div className="flex items-center gap-3 py-5"><span className="text-brand-gold">{icon}</span><div className="flex-1"><h3 className="text-xs font-semibold tracking-[0.1em] text-brand-ink uppercase">{label}</h3><div className="mt-2 flex gap-1">{Array.from({ length: 6 }, (_, index) => <span className={`h-1.5 flex-1 ${index < 4 ? "bg-brand-gold" : "bg-brand-sand-deep"}`} key={index} />)}</div></div><span className="text-xs text-brand-muted">{value}</span></div>;
 }
