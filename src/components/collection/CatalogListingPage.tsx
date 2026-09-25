@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BadgeCheck, Timer } from "lucide-react";
+import { BadgeCheck, Timer } from "lucide-react";
 import type { CatalogPageData, Product, ProductSort, ScentFamily } from "@/domain/models";
 import { Container } from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -46,15 +46,32 @@ export function CatalogListingPage({ activeFamily, data, mode, products, sort }:
           </Container>
         </section>
       ) : null}
-      <section className={isCollection ? "pb-7 lg:pb-8" : "py-7 lg:py-8"}>
+      <section className={isCollection ? "pb-2" : "py-7 lg:py-8"}>
         <Container>
           {!isCollection ? <SectionHeading description={listing.description} eyebrow={listing.eyebrow} title={listing.title} /> : null}
-          <div className={isCollection ? "" : "mt-7"}><CatalogControls activeFamily={activeFamily} families={data.scentFamilies.items} sort={sort} /></div>
+          <div className={isCollection ? "" : "mt-7"}><CatalogControls activeFamily={activeFamily} compact={isCollection} families={data.scentFamilies.items} sort={sort} /></div>
           <p aria-live="polite" className={isCollection ? "sr-only" : "mt-4 text-[0.75rem] text-brand-muted"}>{activeFamilyLabel ? `${activeFamilyLabel} ailesindeki ` : ""}{products.length} parfüm gösteriliyor.</p>
-          <div className="mt-4"><ProductGrid products={products} /></div>
+          <div className={isCollection ? "mt-2" : "mt-4"}><ProductGrid products={products} variant={isCollection ? "catalog" : "default"} /></div>
         </Container>
       </section>
-      {isCollection && data.scentFamilies.enabled ? <section className="border-y border-brand-line bg-brand-paper py-7"><Container><SectionHeading align="center" title={data.scentFamilies.title} /><div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">{data.scentFamilies.items.filter((family) => family.enabled).sort((a, b) => a.order - b.order).map((family) => <Link className="group overflow-hidden border border-brand-line bg-brand-ivory" href={`/koleksiyon?family=${family.id}`} key={family.id}><Media asset={family.image} className="aspect-[8/5] object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none" sizes="(min-width: 1024px) 16vw, 50vw" /><div className="p-2.5 text-center"><h2 className="font-display text-lg text-brand-ink">{family.label}</h2><p className="mt-0.5 text-[0.6rem] tracking-[0.08em] text-brand-muted uppercase">{family.description}</p></div></Link>)}</div><div className="mt-6 text-center"><Link className="inline-flex items-center gap-2 border-b border-brand-gold pb-1 text-[0.625rem] font-semibold tracking-[0.08em] text-brand-teal uppercase" href="/parfumler">Tüm Parfümleri Gör<ArrowRight aria-hidden="true" className="size-4" strokeWidth={1.5} /></Link></div></Container></section> : null}
+      {isCollection && data.scentFamilies.enabled ? (
+        <section className="border-y border-brand-line bg-[#f8f3ed] py-3">
+          <Container>
+            <h2 className="text-center font-display text-[1.375rem] leading-tight tracking-[0.06em] text-[#705630]">{data.scentFamilies.title}</h2>
+            <div className="mt-2 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
+              {data.scentFamilies.items.filter((family) => family.enabled).sort((a, b) => a.order - b.order).map((family) => (
+                <Link aria-current={activeFamily === family.id ? "page" : undefined} className="group overflow-hidden border border-[#e8dfd3] bg-[#fffdfa] transition-colors hover:border-brand-gold" href={`/koleksiyon?family=${family.id}`} key={family.id}>
+                  <Media asset={family.image} className="aspect-[2.6] object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none" sizes="(min-width: 1024px) 16vw, 50vw" />
+                  <div className="px-1.5 py-1 text-center">
+                    <h3 className="font-display text-[0.8125rem] leading-tight text-brand-ink">{family.label}</h3>
+                    <p className="mt-0.5 text-[0.625rem] leading-tight text-brand-muted">{family.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </Container>
+        </section>
+      ) : null}
     </main>
   );
 }

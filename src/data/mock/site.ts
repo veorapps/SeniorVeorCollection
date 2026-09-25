@@ -67,12 +67,12 @@ export const mockCatalogPage: CatalogPageData = {
     { id: "essences", label: "Premium Esanslar", enabled: true, order: 2 },
   ] },
   scentFamilies: { id: "catalog-scent-families", type: "scent-families", enabled: true, order: 2, title: "Koleksiyonu Koku Ailelerine Göre Keşfet", items: [
-    { id: "floral", label: "Çiçeksi", description: "Romantik & zarif", image: placeholderMedia("Çiçeksi", "ivory", 320, 200), enabled: true, order: 1 },
-    { id: "woody", label: "Odunsu", description: "Sıcak & doğal", image: placeholderMedia("Odunsu", "teal", 320, 200), enabled: true, order: 2 },
-    { id: "amber", label: "Amber", description: "Zengin & büyüleyici", image: placeholderMedia("Amber", "gold", 320, 200), enabled: true, order: 3 },
-    { id: "oriental", label: "Oryantal", description: "Tutkulu & gizemli", image: placeholderMedia("Oryantal", "gold", 320, 200), enabled: true, order: 4 },
-    { id: "fresh", label: "Fresh", description: "Ferahlık & enerji", image: placeholderMedia("Fresh", "teal", 320, 200), enabled: true, order: 5 },
-    { id: "unisex", label: "Unisex", description: "Dengeli & zamansız", image: placeholderMedia("Unisex", "ivory", 320, 200), enabled: true, order: 6 },
+    { id: "floral", label: "Çiçeksi", description: "Romantik & zarif", image: { src: "/images/notes/gul.png", alt: "Pembe güller", width: 1254, height: 1254 }, enabled: true, order: 1 },
+    { id: "woody", label: "Odunsu", description: "Sıcak & doğal", image: { src: "/images/notes/sandal-agaci.png", alt: "Sandal ağacı parçaları", width: 1254, height: 1254 }, enabled: true, order: 2 },
+    { id: "amber", label: "Amber", description: "Zengin & büyüleyici", image: { src: "/images/notes/amber.png", alt: "Amber parçaları", width: 1254, height: 1254 }, enabled: true, order: 3 },
+    { id: "oriental", label: "Oryantal", description: "Tutkulu & gizemli", image: { src: "/images/notes/oud.png", alt: "Oud ağacı parçaları", width: 1254, height: 1254 }, enabled: true, order: 4 },
+    { id: "fresh", label: "Fresh", description: "Ferahlık & enerji", image: { src: "/images/notes/bergamot.png", alt: "Taze bergamot", width: 1254, height: 1254 }, enabled: true, order: 5 },
+    { id: "unisex", label: "Unisex", description: "Dengeli & zamansız", image: { src: "/images/notes/paculi.png", alt: "Yeşil paçuli yaprakları", width: 1254, height: 1254 }, enabled: true, order: 6 },
   ] },
   listings: {
     collection: { eyebrow: "Koku Ailesi", title: "Koleksiyondaki Tüm Parfümler", description: "İmza kokunuzu, notaların karakterine göre keşfedin." },

@@ -7,6 +7,7 @@ import { cn } from "@/lib/cn";
 
 export interface CatalogControlsProps {
   activeFamily?: ScentFamily;
+  compact?: boolean;
   families: CatalogScentFamily[];
   sort: ProductSort;
 }
@@ -27,7 +28,7 @@ const familyIcons: Record<ScentFamily, typeof Flower2> = {
   unisex: UsersRound,
 };
 
-export function CatalogControls({ activeFamily, families, sort }: CatalogControlsProps) {
+export function CatalogControls({ activeFamily, compact = false, families, sort }: CatalogControlsProps) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -41,7 +42,7 @@ export function CatalogControls({ activeFamily, families, sort }: CatalogControl
   }
 
   return (
-    <div className="flex flex-col gap-4 border-b border-brand-line py-4 lg:flex-row lg:items-end lg:justify-between">
+    <div className={cn("flex flex-col gap-4 border-b border-brand-line lg:flex-row lg:items-end lg:justify-between", compact ? "pb-2 pt-4" : "py-4")}>
       <div className="min-w-0">
         <p className="mb-2 text-[0.625rem] tracking-[0.11em] text-brand-gold uppercase">Koku Ailesi</p>
         <div aria-label="Koku ailesine göre filtrele" className="flex gap-2 overflow-x-auto pb-1 [scrollbar-width:none]" role="group">
