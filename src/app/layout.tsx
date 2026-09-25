@@ -31,7 +31,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
   return (
     <html data-scroll-behavior="smooth" lang="tr">
       <body className={`${displayFont.variable} ${bodyFont.variable} ${bodyFont.className}`}>
-        <CommerceProvider><Header announcements={siteSettings.announcements} navigation={siteSettings.navigation} siteName={siteSettings.siteName} />
+        <CommerceProvider><Header announcements={siteSettings.announcements} logo={siteSettings.logo} navigation={siteSettings.navigation} siteName={siteSettings.siteName} />
         {children}
         <Footer settings={siteSettings} /></CommerceProvider>
       </body>

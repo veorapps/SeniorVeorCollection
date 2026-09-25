@@ -4,7 +4,7 @@ import { placeholderMedia } from "./media";
 export const mockSiteSettings: SiteSettings = {
   siteName: "Senior Veor Collection",
   brandDescription: "Kokunun zarafetle buluştuğu premium parfüm deneyimi.",
-  logo: placeholderMedia("Senior Veor", "ivory", 360, 120),
+  logo: { src: "/images/brand/rose-sword-mark-source.png", alt: "Senior Veor Collection marka amblemi", width: 1254, height: 1254 },
   defaultSEO: { metaTitle: "Senior Veor Collection", metaDescription: "Kokunun zarafetle buluştuğu premium parfüm koleksiyonu." },
   announcements: [
     { id: "announcement-story", text: "Zarafetin İmzası. Her Şişede Bir Hikâye.", enabled: true, order: 1 },
