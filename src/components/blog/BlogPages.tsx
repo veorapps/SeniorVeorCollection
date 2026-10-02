@@ -5,8 +5,8 @@ import { Container } from "@/components/ui/Container";
 import { Media } from "@/components/ui/Media";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { NewsletterBanner } from "@/components/layout/NewsletterBanner";
 import { ArticleCard } from "./ArticleCard";
+import { BlogNewsletterCard } from "./BlogNewsletterCard";
 
 const categoryIconMap = { clock: Clock3, compass: Compass, flower: Flower2, heart: Heart, newspaper: Newspaper, sparkles: Sparkles };
 
@@ -49,11 +49,10 @@ export function BlogListingPage({ activeCategory, categories, data, featuredPost
           </Container>
         </div>
         <Container className="py-7">
-          {featuredPost && !activeCategory ? <div><ArticleCard featured post={featuredPost} /></div> : null}
+          {featuredPost && !activeCategory ? <div className="grid items-stretch gap-3 lg:h-[13.25rem] lg:grid-cols-[2.2fr_1fr]"><ArticleCard featured post={featuredPost} />{data.newsletter.enabled ? <BlogNewsletterCard benefits={data.newsletter.benefits} description={data.newsletter.description} title={data.newsletter.title} /> : null}</div> : null}
           <div className="mt-7" id="yazilar"><SectionHeading title={activeCategory ? `${categories.find((item) => item.slug === activeCategory)?.name ?? "Blog"} Yazıları` : "Koku Dünyasından Notlar"} /><div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{posts.filter((post) => post.id !== featuredPost?.id || Boolean(activeCategory)).map((post) => <ArticleCard key={post.id} post={post} />)}</div></div>
         </Container>
       </section>
-      {data.newsletter.enabled ? <NewsletterBanner description={data.newsletter.description} title={data.newsletter.title} /> : null}
     </main>
   );
 }

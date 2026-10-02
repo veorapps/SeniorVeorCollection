@@ -24,7 +24,7 @@ export const mockBlogPosts: BlogPost[] = postSeeds.map(([slug, title, categoryId
   title,
   excerpt: "Koku seçiminizi daha bilinçli ve kişisel hale getirecek zamansız öneriler.",
   categoryId,
-  coverImage: placeholderMedia(title, index % 2 === 0 ? "gold" : "ivory", 1200, 720),
+  coverImage: featured ? { src: "/images/home/scent-pyramid-v1.png", alt: "Narenciye, çiçek ve odunsu parfüm notaları", width: 1254, height: 1254 } : placeholderMedia(title, index % 2 === 0 ? "gold" : "ivory", 1200, 720),
   publishedAt: "2026-08-20T10:00:00.000Z",
   readingTimeMinutes: index + 3,
   content: [
