@@ -19,8 +19,28 @@ export function AboutPage({ data }: { data: AboutPageData }) {
       {data.values.enabled ? <ValuesSection data={data} /> : null}
       {data.journey.enabled ? <JourneySection data={data} /> : null}
       {data.packaging.enabled ? <PackagingSection data={data} /> : null}
-      <NewsletterBanner description="Özel kampanyalar, yeni koleksiyonlar ve parfüm ipuçları e-posta kutunuzda." title="Kokunun Zarafetini Keşfedin" />
+      {data.ctaBand.enabled ? <AboutCtaBand data={data} /> : null}
+      {data.newsletter.enabled ? <NewsletterBanner description={data.newsletter.description} title={data.newsletter.title} variant="home" /> : null}
     </main>
+  );
+}
+
+function AboutCtaBand({ data }: { data: AboutPageData }) {
+  const band = data.ctaBand;
+  return (
+    <section className="relative isolate overflow-hidden bg-brand-teal text-brand-ivory" id="about-cta">
+      <div className="absolute inset-y-0 right-0 -z-10 w-[38%] max-lg:hidden">
+        <Media asset={band.image} className="h-full w-full object-cover object-[52%_55%]" sizes="38vw" />
+        <div className="absolute inset-0 bg-linear-to-r from-brand-teal via-brand-teal/70 to-transparent" />
+      </div>
+      <Container className="flex min-h-[5.5rem] flex-col justify-center gap-4 py-5 sm:flex-row sm:items-center sm:justify-between lg:pr-[34%]">
+        <div>
+          <h2 className="font-display text-[1.4rem] leading-none tracking-[0.04em]">{band.title}</h2>
+          <p className="mt-2 text-[0.625rem] leading-4 text-brand-ivory/75">{band.description}</p>
+        </div>
+        <Link className="inline-flex min-h-9 shrink-0 items-center justify-center border border-brand-gold/80 px-5 text-[0.5625rem] font-semibold tracking-[0.08em] uppercase" href={band.cta.href}>{band.cta.label}<span aria-hidden="true" className="ml-4 text-sm leading-none">→</span></Link>
+      </Container>
+    </section>
   );
 }
 

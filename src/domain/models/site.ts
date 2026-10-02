@@ -183,6 +183,8 @@ export interface AboutPageData {
   values: { id: string; type: "values"; enabled: boolean; order: number; title: string; items: BenefitItem[] };
   journey: { id: string; type: "journey"; enabled: boolean; order: number; title: string; items: AboutJourneyStep[] };
   packaging: { id: string; type: "about-packaging"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; gallery: MediaAsset[]; cta: CTA };
+  ctaBand: { id: string; type: "about-cta"; enabled: boolean; order: number; title: string; description: string; image: MediaAsset; cta: CTA };
+  newsletter: { id: string; type: "about-newsletter"; enabled: boolean; order: number; title: string; description: string };
   trustBar: { id: string; type: "about-trust"; enabled: boolean; order: number; items: BenefitItem[] };
 }
 
