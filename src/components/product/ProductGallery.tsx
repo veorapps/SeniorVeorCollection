@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 import type { MediaAsset, ProductBadge } from "@/domain/models";
 import { Media } from "@/components/ui/Media";
@@ -28,18 +28,31 @@ export function ProductGallery({
   const currentIndex = Math.min(selectedIndex, Math.max(images.length - 1, 0));
   const selectedImage = images[currentIndex];
 
+  const closeZoom = useCallback(() => {
+    setIsZoomOpen(false);
+    window.requestAnimationFrame(() => zoomTriggerRef.current?.focus());
+  }, []);
+
   useEffect(() => {
     if (!isZoomOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     closeButtonRef.current?.focus();
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsZoomOpen(false);
-        zoomTriggerRef.current?.focus();
+        closeZoom();
+      }
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeButtonRef.current?.focus();
       }
     };
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [isZoomOpen]);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [closeZoom, isZoomOpen]);
 
   if (!selectedImage) return null;
 
@@ -112,22 +125,20 @@ export function ProductGallery({
 
       {isZoomOpen ? (
         <div
-          aria-label={`${productName} büyütülmüş görseli`}
+          aria-labelledby="product-zoom-title"
           aria-modal="true"
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
           onClick={(event) => {
-            if (event.target === event.currentTarget) setIsZoomOpen(false);
+            if (event.target === event.currentTarget) closeZoom();
           }}
           role="dialog"
         >
           <div className="relative flex max-h-full w-full max-w-5xl flex-col items-center gap-3">
+            <h2 className="sr-only" id="product-zoom-title">{productName} büyütülmüş görseli</h2>
             <button
               aria-label="Büyütülmüş görseli kapat"
               className="self-end border border-brand-line bg-brand-paper p-2 text-brand-ink"
-              onClick={() => {
-                setIsZoomOpen(false);
-                zoomTriggerRef.current?.focus();
-              }}
+              onClick={closeZoom}
               ref={closeButtonRef}
               type="button"
             >

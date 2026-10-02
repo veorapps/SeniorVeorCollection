@@ -13,7 +13,7 @@ export function ProductCommunitySections({ product, relatedProducts }: { product
     <>
       <section className="border-b border-brand-line bg-brand-paper py-7">
         <Container>
-          <p className="text-[0.625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase">Müşteri Yorumları</p>
+          <h2 className="text-[0.625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase">Müşteri Yorumları</h2>
           <div className="mt-4 grid border-y border-brand-line lg:grid-cols-[12rem_1fr] lg:divide-x lg:divide-brand-line">
             <div className="flex items-center justify-between gap-5 py-5 lg:block lg:pr-6">
               <div>
@@ -28,7 +28,7 @@ export function ProductCommunitySections({ product, relatedProducts }: { product
               {reviews.map((review) => (
                 <article className="py-5 md:px-5" key={review.id}>
                   <div className="flex min-h-5 items-center justify-between gap-3">
-                    <h2 className="text-[0.75rem] font-semibold text-brand-ink">{review.authorName}</h2>
+                    <h3 className="text-[0.75rem] font-semibold text-brand-ink">{review.authorName}</h3>
                     {review.verifiedPurchase ? <span className="inline-flex items-center gap-1 text-[0.5625rem] font-semibold text-brand-teal"><BadgeCheck aria-hidden="true" className="size-3.5" />Doğrulanmış Alıcı</span> : null}
                   </div>
                   <RatingStars className="mt-2" rating={review.rating} showValue={false} />
