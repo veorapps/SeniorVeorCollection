@@ -18,10 +18,33 @@ export function AboutPage({ data }: { data: AboutPageData }) {
       {data.story.enabled || data.craft.enabled ? <StoryAndCraft data={data} /> : null}
 
       {data.values.enabled ? <ValuesSection data={data} /> : null}
-      {data.journey.enabled ? <section className="py-7"><Container><SectionHeading align="center" title={data.journey.title} /><ol className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">{data.journey.items.filter((item) => item.enabled).sort((a, b) => a.order - b.order).map((item, index) => <li className="relative border-t border-brand-gold pt-4" key={item.id}><span className="grid size-8 place-items-center rounded-full border border-brand-gold bg-brand-paper text-[0.625rem] text-brand-gold">{String(index + 1).padStart(2, "0")}</span><h3 className="mt-3 text-[0.625rem] font-semibold tracking-[0.08em] text-brand-ink uppercase">{item.title}</h3><p className="mt-1 text-[0.625rem] leading-4 text-brand-muted">{item.description}</p></li>)}</ol></Container></section> : null}
+      {data.journey.enabled ? <JourneySection data={data} /> : null}
       {data.packaging.enabled ? <section className="border-y border-brand-line bg-brand-sand"><Container className="grid lg:grid-cols-2"><div className="py-7 lg:py-10 lg:pr-8"><SectionHeading description={data.packaging.description} eyebrow={data.packaging.eyebrow} title={data.packaging.title} /><Link className="mt-5 inline-flex min-h-10 items-center bg-brand-teal px-5 text-[0.625rem] font-semibold tracking-[0.08em] text-brand-ivory uppercase" href={data.packaging.cta.href}>{data.packaging.cta.label}</Link></div><Media asset={data.packaging.image} className="min-h-52 h-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" /></Container></section> : null}
       <NewsletterBanner description="Özel kampanyalar, yeni koleksiyonlar ve parfüm ipuçları e-posta kutunuzda." title="Kokunun Zarafetini Keşfedin" />
     </main>
+  );
+}
+
+function JourneySection({ data }: { data: AboutPageData }) {
+  const items = data.journey.items.filter((item) => item.enabled).sort((a, b) => a.order - b.order);
+  return (
+    <section className="scroll-mt-20 bg-brand-ivory py-5" id="journey">
+      <Container className="max-w-[64rem]">
+        <h2 className="text-center font-display text-[1.25rem] tracking-[0.12em] text-brand-ink uppercase">{data.journey.title}</h2>
+        <ol className="mt-4 grid lg:grid-cols-6">
+          {items.map((item, index) => (
+            <li className="relative grid grid-cols-[2rem_1fr] gap-3 pb-5 last:pb-0 lg:block lg:pb-0 lg:text-center" key={item.id}>
+              {index < items.length - 1 ? <span aria-hidden="true" className="absolute top-8 bottom-0 left-[0.95rem] border-l border-brand-gold/55 lg:top-4 lg:right-[-50%] lg:bottom-auto lg:left-[calc(50%+1rem)] lg:border-t lg:border-l-0" /> : null}
+              <span className="relative z-10 grid size-8 place-items-center rounded-full border border-brand-gold bg-brand-ivory text-[0.5625rem] text-brand-gold lg:mx-auto">{String(index + 1).padStart(2, "0")}</span>
+              <div className="min-w-0 lg:mt-2">
+                <h3 className="text-[0.5625rem] font-semibold tracking-[0.08em] text-brand-ink uppercase">{item.title}</h3>
+                <p className="mt-1 text-[0.5625rem] leading-[1.35] text-brand-muted lg:mx-auto lg:max-w-[8.5rem]">{item.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Container>
+    </section>
   );
 }
 
