@@ -2,9 +2,12 @@ import type { BlogCategory, BlogPost } from "@/domain/models";
 import { placeholderMedia } from "./media";
 
 export const mockBlogCategories: BlogCategory[] = [
-  { id: "category-guide", slug: "koku-rehberi", name: "Koku Rehberi", enabled: true, order: 1 },
-  { id: "category-notes", slug: "parfum-notalari", name: "Parfüm Notaları", enabled: true, order: 2 },
-  { id: "category-care", slug: "bakim", name: "Bakım", enabled: true, order: 3 },
+  { id: "category-guide", slug: "koku-rehberi", name: "Koku Rehberi", icon: "compass", enabled: true, order: 1 },
+  { id: "category-notes", slug: "parfum-notalari", name: "Parfüm Notaları", icon: "heart", enabled: true, order: 2 },
+  { id: "category-usage", slug: "kullanim-onerileri", name: "Kullanım Önerileri", icon: "sparkles", enabled: true, order: 3 },
+  { id: "category-longevity", slug: "kalicilik", name: "Kalıcılık", icon: "clock", enabled: true, order: 4 },
+  { id: "category-care", slug: "bakim", name: "Bakım", icon: "flower", enabled: true, order: 5 },
+  { id: "category-news", slug: "marka-haberleri", name: "Marka Haberleri", icon: "newspaper", enabled: true, order: 6 },
 ];
 
 const postSeeds = [

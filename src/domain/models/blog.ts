@@ -5,6 +5,7 @@ export interface BlogCategory {
   slug: string;
   name: string;
   description?: string;
+  icon?: string;
   enabled: boolean;
   order: number;
 }

@@ -104,7 +104,7 @@ export const mockDocumentsPage: DocumentsPageData = {
 
 export const mockBlogPage: BlogPageData = {
   seo: { metaTitle: "Koku Rehberi | Senior Veor Collection", metaDescription: "Parfüm notaları, kullanım önerileri ve koku dünyasından ilham veren rehberler." },
-  hero: { id: "blog-hero", type: "blog-hero", enabled: true, order: 1, eyebrow: "Koku Rehberi", title: "Kokunuzu Keşfedin, İz Bırakın", description: "Parfüm; bir anıyı canlandırır, bir duyguyu yansıtır ve bir imzaya dönüşür. Koku rehberimizle notaların büyülü dünyasına adım atın.", image: { src: "/images/home/hero-luxury-perfume.png", alt: "Senior Veor parfüm şişesi", width: 1536, height: 1024 }, cta: { label: "Tüm Yazıları Keşfet", href: "/blog#yazilar" } },
+  hero: { id: "blog-hero", type: "blog-hero", enabled: true, order: 1, eyebrow: "Koku Rehberi", title: "Kokunuzu Keşfedin, İz Bırakın", description: "Parfüm; bir anıyı canlandırır, bir duyguyu yansıtır ve bir imzaya dönüşür. Koku rehberimizle notaların büyülü dünyasına adım atın.", image: { src: "/images/home/hero-if-only-desktop-v2.png", alt: "İpek üzerinde Senior Veor If Only parfüm şişesi ve kutusu", width: 2172, height: 724 }, mobileImage: { src: "/images/home/hero-if-only-mobile-v2.png", alt: "İpek üzerinde Senior Veor If Only parfüm şişesi ve kutusu", width: 1024, height: 1536 }, cta: { label: "Tüm Yazıları Keşfet", href: "/blog#yazilar" } },
   newsletter: { id: "blog-newsletter", type: "blog-newsletter", enabled: true, order: 2, title: "Koku Dünyasından Haberdar Olun", description: "Yeni yazılar, özel içerikler ve kampanyalardan ilk siz haberdar olun." },
 };
 

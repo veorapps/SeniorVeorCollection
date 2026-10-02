@@ -199,7 +199,7 @@ export interface DocumentsPageData {
 
 export interface BlogPageData {
   seo: SEOData;
-  hero: { id: string; type: "blog-hero"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; cta: CTA };
+  hero: { id: string; type: "blog-hero"; enabled: boolean; order: number; eyebrow: string; title: string; description: string; image: MediaAsset; mobileImage?: MediaAsset; cta: CTA };
   newsletter: { id: string; type: "blog-newsletter"; enabled: boolean; order: number; title: string; description: string };
 }
 
