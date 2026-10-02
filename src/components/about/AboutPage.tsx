@@ -3,7 +3,6 @@ import { BadgeCheck, Clock3, Droplet, Flower2, Handshake, Heart, HeartHandshake,
 import type { AboutPageData, BenefitItem } from "@/domain/models";
 import { Container } from "@/components/ui/Container";
 import { Media } from "@/components/ui/Media";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TrustBar } from "@/components/layout/TrustBar";
 import { NewsletterBanner } from "@/components/layout/NewsletterBanner";
 
@@ -19,9 +18,28 @@ export function AboutPage({ data }: { data: AboutPageData }) {
 
       {data.values.enabled ? <ValuesSection data={data} /> : null}
       {data.journey.enabled ? <JourneySection data={data} /> : null}
-      {data.packaging.enabled ? <section className="border-y border-brand-line bg-brand-sand"><Container className="grid lg:grid-cols-2"><div className="py-7 lg:py-10 lg:pr-8"><SectionHeading description={data.packaging.description} eyebrow={data.packaging.eyebrow} title={data.packaging.title} /><Link className="mt-5 inline-flex min-h-10 items-center bg-brand-teal px-5 text-[0.625rem] font-semibold tracking-[0.08em] text-brand-ivory uppercase" href={data.packaging.cta.href}>{data.packaging.cta.label}</Link></div><Media asset={data.packaging.image} className="min-h-52 h-full object-cover" sizes="(min-width: 1024px) 50vw, 100vw" /></Container></section> : null}
+      {data.packaging.enabled ? <PackagingSection data={data} /> : null}
       <NewsletterBanner description="Özel kampanyalar, yeni koleksiyonlar ve parfüm ipuçları e-posta kutunuzda." title="Kokunun Zarafetini Keşfedin" />
     </main>
+  );
+}
+
+function PackagingSection({ data }: { data: AboutPageData }) {
+  const packaging = data.packaging;
+  return (
+    <section className="scroll-mt-20 border-y border-brand-line bg-brand-sand" id="packaging">
+      <Container className="grid max-w-[64rem] lg:grid-cols-[0.72fr_1.28fr] lg:items-stretch">
+        <div className="flex flex-col justify-center py-7 lg:pr-8">
+          <p className="text-[0.5625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase">{packaging.eyebrow}</p>
+          <h2 className="mt-2 max-w-[20rem] font-display text-[1.65rem] leading-[1.02] text-brand-ink">{packaging.title}</h2>
+          <p className="mt-3 max-w-[20rem] text-[0.6875rem] leading-[1.5] text-brand-muted">{packaging.description}</p>
+          <Link className="mt-4 inline-flex min-h-9 w-fit items-center bg-brand-teal px-4 text-[0.5625rem] font-semibold tracking-[0.08em] text-brand-ivory uppercase" href={packaging.cta.href}>{packaging.cta.label}<span aria-hidden="true" className="ml-4 text-sm leading-none">→</span></Link>
+        </div>
+        <div className="grid grid-cols-3 gap-1 pb-5 lg:py-4">
+          {packaging.gallery.map((asset, index) => <Media asset={asset} className={`aspect-[4/3] h-full w-full bg-brand-ivory ${index === 1 ? "object-contain p-5" : "object-cover"}`} key={asset.src} sizes="(min-width: 1024px) 20vw, 33vw" />)}
+        </div>
+      </Container>
+    </section>
   );
 }
 
