@@ -100,7 +100,7 @@ export function FirstVisitIntro() {
       <video
         aria-label="Senior Veor Collection marka açılış videosu"
         autoPlay
-        className={`relative z-10 h-full w-full origin-bottom scale-[1.04] object-contain object-bottom transition-opacity duration-700 sm:scale-110 lg:scale-[1.15] ${isReady ? "opacity-100" : "opacity-0"}`}
+        className={`relative z-10 h-full w-full origin-bottom scale-[1.04] object-contain object-bottom transition-opacity duration-700 sm:scale-x-[1.18] sm:scale-y-110 lg:scale-x-[1.25] lg:scale-y-[1.15] ${isReady ? "opacity-100" : "opacity-0"}`}
         muted
         onCanPlay={() => {
           const video = videoRef.current;
