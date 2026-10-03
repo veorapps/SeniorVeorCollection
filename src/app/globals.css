@@ -22,6 +22,10 @@ body {
   font-synthesis: none;
 }
 
+html[data-intro-seen="true"] .site-intro {
+  display: none;
+}
+
 h1,
 h2,
 h3,
