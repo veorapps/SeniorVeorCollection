@@ -48,7 +48,7 @@ export function CatalogListingPage({ activeFamily, data, mode, products, sort }:
       ) : null}
       <section className={isCollection ? "pb-2" : "py-7 lg:py-8"}>
         <Container>
-          {!isCollection ? <SectionHeading description={listing.description} eyebrow={listing.eyebrow} title={listing.title} /> : null}
+          {!isCollection ? <SectionHeading description={listing.description} eyebrow={listing.eyebrow} level={1} title={listing.title} /> : null}
           <div className={isCollection ? "" : "mt-7"}><CatalogControls activeFamily={activeFamily} compact={isCollection} families={data.scentFamilies.items} sort={sort} /></div>
           <p aria-live="polite" className={isCollection ? "sr-only" : "mt-4 text-[0.75rem] text-brand-muted"}>{activeFamilyLabel ? `${activeFamilyLabel} ailesindeki ` : ""}{products.length} parfüm gösteriliyor.</p>
           <div className={isCollection ? "mt-2" : "mt-4"}><ProductGrid products={products} variant={isCollection ? "catalog" : "default"} /></div>
