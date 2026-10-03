@@ -29,11 +29,11 @@ function BrandLink({ compact = false, logo, siteName }: { compact?: boolean; log
 
   return (
     <Link aria-label={siteName} className="flex items-center gap-1.5 text-[#725b3c]" href="/">
-      <Image alt="" className={cn("shrink-0 object-contain mix-blend-multiply", compact ? "size-10" : "size-13")} height={logo.height} sizes={compact ? "2.5rem" : "3.25rem"} src={logo.src} unoptimized={logo.src.startsWith("data:")} width={logo.width} />
-      <span aria-hidden="true" className="h-10 w-px bg-brand-line" />
+      <Image alt="" className={cn("shrink-0 object-contain mix-blend-multiply", compact ? "size-9" : "size-11")} height={logo.height} sizes={compact ? "2.25rem" : "2.75rem"} src={logo.src} unoptimized={logo.src.startsWith("data:")} width={logo.width} />
+      <span aria-hidden="true" className={cn("w-px bg-brand-line", compact ? "h-8" : "h-9")} />
       <span className="min-w-0 leading-none">
-        <span className={cn("block whitespace-nowrap font-display uppercase", compact ? "text-[1.05rem] tracking-[0.055em]" : "text-[1.45rem] tracking-[0.06em]")}>{name}</span>
-        {collection ? <span className={cn("mt-1 block text-center font-semibold uppercase", compact ? "text-[0.4rem] tracking-[0.25em]" : "text-[0.5rem] tracking-[0.3em]")}>{collection}</span> : null}
+        <span className={cn("block whitespace-nowrap font-display uppercase", compact ? "text-[0.95rem] tracking-[0.055em]" : "text-[1.25rem] tracking-[0.06em]")}>{name}</span>
+        {collection ? <span className={cn("mt-1 block text-center font-semibold uppercase", compact ? "text-[0.375rem] tracking-[0.25em]" : "text-[0.45rem] tracking-[0.3em]")}>{collection}</span> : null}
       </span>
     </Link>
   );
@@ -83,7 +83,7 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
     <header className="relative z-30 bg-brand-paper">
       {pathname === "/" ? <AnnouncementBar items={announcements} /> : null}
       <div className="border-b border-brand-line">
-        <div className="mx-auto grid h-[4.5rem] max-w-[100rem] grid-cols-[1fr_auto_1fr] items-center gap-2 px-[var(--sv-gutter)] lg:flex lg:h-[5rem] lg:gap-4">
+        <div className="mx-auto grid h-[4.5rem] max-w-[100rem] grid-cols-[1fr_auto_1fr] items-center gap-2 px-[var(--sv-gutter)] lg:flex lg:h-[4.5rem] lg:gap-4 lg:px-8 xl:px-10">
           <div className="flex min-w-0 items-center lg:flex-1">
             <div className="lg:hidden">
               <button aria-controls="mobile-navigation" aria-expanded={isMenuOpen} aria-label="Menüyü aç" className="inline-flex size-11 items-center justify-center text-brand-ink" onClick={() => setIsMenuOpen(true)} ref={menuTriggerRef} type="button">
@@ -95,13 +95,13 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
 
           <div className="lg:hidden"><BrandLink compact logo={logo} siteName={siteName} /></div>
 
-          <nav aria-label="Ana navigasyon" className="hidden shrink-0 items-center justify-center gap-5 lg:flex xl:gap-8">
+          <nav aria-label="Ana navigasyon" className="hidden h-full shrink-0 items-center justify-center gap-5 lg:flex xl:gap-8">
             {visibleNavigation.map((item) => {
               const active = isActivePath(pathname, item.href);
               return (
                 <Link
                   aria-current={active ? "page" : undefined}
-                  className={cn("relative py-7 text-[0.75rem] text-brand-ink transition-colors hover:text-brand-gold", active && "text-brand-ink after:absolute after:inset-x-0 after:bottom-4 after:h-px after:bg-brand-gold")}
+                  className={cn("relative flex h-full items-center text-[0.75rem] text-brand-ink transition-colors hover:text-brand-gold", active && "text-brand-ink after:absolute after:inset-x-0 after:bottom-3.5 after:h-px after:bg-brand-gold")}
                   href={item.href}
                   key={item.id}
                   target={item.newTab ? "_blank" : undefined}
@@ -113,10 +113,10 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
           </nav>
 
           <div className="flex min-w-0 items-center justify-end gap-0.5 sm:gap-1 lg:flex-1">
-            <IconButton aria-label="Ara" className="text-brand-ink" onClick={() => setIsSearchOpen(true)}><Search aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></IconButton>
-            <div className="hidden sm:block"><IconButton aria-label="Hesabım" className="text-brand-ink"><UserRound aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} /></IconButton></div>
-            <Link aria-label={`Favoriler (${wishlist.length})`} className="relative hidden size-11 items-center justify-center text-brand-ink transition-colors hover:border-brand-line hover:bg-brand-paper sm:inline-flex" href="/favoriler"><Heart aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} />{wishlist.length ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{wishlist.length}</span> : null}</Link>
-            <Link aria-label={`Sepet (${cartCount})`} className="relative inline-flex size-11 items-center justify-center text-brand-ink transition-colors hover:border-brand-line hover:bg-brand-paper" href="/sepet"><ShoppingBag aria-hidden="true" className="size-[1.125rem]" strokeWidth={1.5} />{cartCount ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{cartCount}</span> : null}</Link>
+            <IconButton aria-label="Ara" className="text-brand-ink" onClick={() => setIsSearchOpen(true)}><Search aria-hidden="true" className="size-5" strokeWidth={1.4} /></IconButton>
+            <div className="hidden sm:block"><IconButton aria-label="Hesabım" className="text-brand-ink"><UserRound aria-hidden="true" className="size-5" strokeWidth={1.4} /></IconButton></div>
+            <Link aria-label={`Favoriler (${wishlist.length})`} className="relative hidden size-11 items-center justify-center text-brand-ink transition-colors hover:border-brand-line hover:bg-brand-paper sm:inline-flex" href="/favoriler"><Heart aria-hidden="true" className="size-5" strokeWidth={1.4} />{wishlist.length ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{wishlist.length}</span> : null}</Link>
+            <Link aria-label={`Sepet (${cartCount})`} className="relative inline-flex size-11 items-center justify-center text-brand-ink transition-colors hover:border-brand-line hover:bg-brand-paper" href="/sepet"><ShoppingBag aria-hidden="true" className="size-5" strokeWidth={1.4} />{cartCount ? <span className="absolute right-1 top-1 inline-flex size-4 items-center justify-center rounded-full bg-brand-gold text-[0.5625rem] font-bold text-brand-paper">{cartCount}</span> : null}</Link>
           </div>
         </div>
       </div>

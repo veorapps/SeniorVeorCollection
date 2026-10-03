@@ -12,7 +12,7 @@ export function AnnouncementBar({ items }: AnnouncementBarProps) {
   return (
     <div className="border-b border-brand-line bg-brand-sand px-[var(--sv-gutter)] py-1.5 text-[0.5625rem] font-medium tracking-[0.1em] text-brand-muted uppercase">
       <div className="mx-auto flex max-w-[var(--sv-container-max)] items-center justify-center gap-x-10 gap-y-1 overflow-hidden whitespace-nowrap">
-        {visibleItems.map((item) => <span key={item.id}>{item.text}</span>)}
+        {visibleItems.map((item, index) => <span className={index === 0 ? "max-w-full overflow-hidden text-ellipsis" : "hidden sm:inline"} key={item.id}>{item.text}</span>)}
       </div>
     </div>
   );
