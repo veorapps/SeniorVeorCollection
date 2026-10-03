@@ -33,7 +33,8 @@ export const mockProductRepository: ProductRepository = {
 export const mockBlogRepository: BlogRepository = {
   async getAll(categorySlug) {
     if (!categorySlug) return mockBlogPosts.filter((post) => post.enabled);
-    return mockBlogPosts.filter((post) => post.categoryId.endsWith(categorySlug.replace("parfum-notalari", "notes").replace("koku-rehberi", "guide").replace("bakim", "care")) && post.enabled);
+    const categoryIdBySlug: Record<string, string> = { "koku-rehberi": "category-guide", "parfum-notalari": "category-notes", "kullanim-onerileri": "category-usage", kalicilik: "category-longevity", bakim: "category-care", "marka-haberleri": "category-news" };
+    return mockBlogPosts.filter((post) => post.categoryId === categoryIdBySlug[categorySlug] && post.enabled);
   },
   async getBySlug(slug) { return mockBlogPosts.find((post) => post.slug === slug && post.enabled) ?? null; },
   async getFeatured() { return mockBlogPosts.find((post) => post.featured && post.enabled) ?? null; },
