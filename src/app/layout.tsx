@@ -32,15 +32,17 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html data-scroll-behavior="smooth" lang="tr" suppressHydrationWarning>
+      <head>
+        <Script id="senior-veor-intro-state" strategy="beforeInteractive">
+          {"try{if(new URLSearchParams(location.search).get('intro')==='1'){delete document.documentElement.dataset.introSeen}else if(localStorage.getItem('senior-veor:intro:v1')==='seen'){document.documentElement.dataset.introSeen='true'}else{delete document.documentElement.dataset.introSeen}}catch(e){}"}
+        </Script>
+      </head>
       <body className={`${displayFont.variable} ${bodyFont.variable} ${bodyFont.className}`}>
         <FirstVisitIntro />
         <CommerceProvider><Header announcements={siteSettings.announcements} logo={siteSettings.logo} navigation={siteSettings.navigation} siteName={siteSettings.siteName} />
         {children}
         <Footer settings={siteSettings} /></CommerceProvider>
       </body>
-      <Script id="senior-veor-intro-state" strategy="beforeInteractive">
-        {"try{if(localStorage.getItem('senior-veor:intro:v1')==='seen'){document.documentElement.dataset.introSeen='true'}}catch(e){}"}
-      </Script>
     </html>
   );
 }
