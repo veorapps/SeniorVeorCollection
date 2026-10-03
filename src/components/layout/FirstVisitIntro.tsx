@@ -14,7 +14,6 @@ export function FirstVisitIntro() {
   const [needsInteraction, setNeedsInteraction] = useState(false);
   const phaseRef = useRef<IntroPhase>("visible");
   const videoRef = useRef<HTMLVideoElement>(null);
-  const backdropVideoRef = useRef<HTMLVideoElement>(null);
   const forcePreviewRef = useRef(false);
   const hasPersistedRef = useRef(false);
   const exitTimerRef = useRef<number | null>(null);
@@ -99,23 +98,9 @@ export function FirstVisitIntro() {
       </div>
 
       <video
-        aria-hidden="true"
-        autoPlay
-        className={`absolute inset-0 h-full w-full scale-110 object-cover blur-2xl transition-opacity duration-700 ${isReady ? "opacity-50" : "opacity-0"}`}
-        muted
-        playsInline
-        preload="auto"
-        ref={backdropVideoRef}
-        tabIndex={-1}
-      >
-        <source src="/videos/senior-veor-intro.mp4" type="video/mp4" />
-      </video>
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[#f4ede4]/20" />
-
-      <video
         aria-label="Senior Veor Collection marka açılış videosu"
         autoPlay
-        className={`relative z-10 h-full w-full object-contain object-center transition-opacity duration-700 ${isReady ? "opacity-100" : "opacity-0"}`}
+        className={`relative z-10 h-full w-full origin-bottom scale-[1.04] object-contain object-bottom transition-opacity duration-700 sm:scale-110 lg:scale-[1.15] ${isReady ? "opacity-100" : "opacity-0"}`}
         muted
         onCanPlay={() => {
           const video = videoRef.current;
@@ -126,12 +111,6 @@ export function FirstVisitIntro() {
         onEnded={finishIntro}
         onError={finishIntro}
         onPlaying={() => {
-          const backdropVideo = backdropVideoRef.current;
-          const video = videoRef.current;
-          if (backdropVideo && video) {
-            backdropVideo.currentTime = video.currentTime;
-            void backdropVideo.play().catch(() => undefined);
-          }
           setIsReady(true);
           setNeedsInteraction(false);
           persistIntroSeen();
@@ -148,7 +127,6 @@ export function FirstVisitIntro() {
         <button
           className="absolute left-1/2 top-1/2 z-30 min-h-12 -translate-x-1/2 -translate-y-1/2 border border-white/70 bg-[#073f3d]/85 px-8 text-xs font-semibold tracking-[0.16em] text-white uppercase backdrop-blur-md transition-colors hover:bg-[#073f3d]"
           onClick={() => {
-            void backdropVideoRef.current?.play().catch(() => undefined);
             void videoRef.current?.play().catch(finishIntro);
           }}
           type="button"
