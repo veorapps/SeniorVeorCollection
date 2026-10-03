@@ -14,6 +14,7 @@ export function FirstVisitIntro() {
   const [needsInteraction, setNeedsInteraction] = useState(false);
   const phaseRef = useRef<IntroPhase>("visible");
   const videoRef = useRef<HTMLVideoElement>(null);
+  const backdropVideoRef = useRef<HTMLVideoElement>(null);
   const forcePreviewRef = useRef(false);
   const hasPersistedRef = useRef(false);
   const exitTimerRef = useRef<number | null>(null);
@@ -89,7 +90,7 @@ export function FirstVisitIntro() {
       className={`site-intro fixed inset-0 z-[100] overflow-hidden bg-[#f4ede4] transition-opacity duration-[650ms] ease-out ${phase === "leaving" ? "pointer-events-none opacity-0" : "opacity-100"}`}
       role="dialog"
     >
-      <div aria-hidden="true" className={`absolute inset-0 grid place-items-center transition-opacity duration-500 ${isReady ? "opacity-0" : "opacity-100"}`}>
+      <div aria-hidden="true" className={`absolute inset-0 z-20 grid place-items-center transition-opacity duration-500 ${isReady ? "pointer-events-none opacity-0" : "opacity-100"}`}>
         <div className="text-center text-[#725b3c]">
           <p className="font-display text-3xl tracking-[0.08em] uppercase">Senior Veor</p>
           <p className="mt-2 text-[0.5625rem] font-semibold tracking-[0.42em] uppercase">Collection</p>
@@ -98,9 +99,23 @@ export function FirstVisitIntro() {
       </div>
 
       <video
+        aria-hidden="true"
+        autoPlay
+        className={`absolute inset-0 h-full w-full scale-110 object-cover blur-2xl transition-opacity duration-700 ${isReady ? "opacity-50" : "opacity-0"}`}
+        muted
+        playsInline
+        preload="auto"
+        ref={backdropVideoRef}
+        tabIndex={-1}
+      >
+        <source src="/videos/senior-veor-intro.mp4" type="video/mp4" />
+      </video>
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[#f4ede4]/20" />
+
+      <video
         aria-label="Senior Veor Collection marka açılış videosu"
         autoPlay
-        className={`relative h-full w-full object-cover object-bottom transition-opacity duration-700 ${isReady ? "opacity-100" : "opacity-0"}`}
+        className={`relative z-10 h-full w-full object-contain object-center transition-opacity duration-700 ${isReady ? "opacity-100" : "opacity-0"}`}
         muted
         onCanPlay={() => {
           const video = videoRef.current;
@@ -111,6 +126,12 @@ export function FirstVisitIntro() {
         onEnded={finishIntro}
         onError={finishIntro}
         onPlaying={() => {
+          const backdropVideo = backdropVideoRef.current;
+          const video = videoRef.current;
+          if (backdropVideo && video) {
+            backdropVideo.currentTime = video.currentTime;
+            void backdropVideo.play().catch(() => undefined);
+          }
           setIsReady(true);
           setNeedsInteraction(false);
           persistIntroSeen();
@@ -122,11 +143,12 @@ export function FirstVisitIntro() {
         <source src="/videos/senior-veor-intro.mp4" type="video/mp4" />
       </video>
 
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-linear-to-b from-[#182825]/10 via-transparent to-[#182825]/20" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-20 bg-linear-to-b from-[#182825]/10 via-transparent to-[#182825]/20" />
       {needsInteraction ? (
         <button
-          className="absolute left-1/2 top-1/2 min-h-12 -translate-x-1/2 -translate-y-1/2 border border-white/70 bg-[#073f3d]/85 px-8 text-xs font-semibold tracking-[0.16em] text-white uppercase backdrop-blur-md transition-colors hover:bg-[#073f3d]"
+          className="absolute left-1/2 top-1/2 z-30 min-h-12 -translate-x-1/2 -translate-y-1/2 border border-white/70 bg-[#073f3d]/85 px-8 text-xs font-semibold tracking-[0.16em] text-white uppercase backdrop-blur-md transition-colors hover:bg-[#073f3d]"
           onClick={() => {
+            void backdropVideoRef.current?.play().catch(() => undefined);
             void videoRef.current?.play().catch(finishIntro);
           }}
           type="button"
@@ -135,7 +157,7 @@ export function FirstVisitIntro() {
         </button>
       ) : null}
       <button
-        className="absolute right-5 top-5 inline-flex min-h-10 items-center border border-white/55 bg-[#182825]/25 px-5 text-[0.625rem] font-semibold tracking-[0.16em] text-white uppercase backdrop-blur-md transition-colors hover:bg-[#182825]/45 sm:right-8 sm:top-8"
+        className="absolute right-5 top-5 z-30 inline-flex min-h-10 items-center border border-white/55 bg-[#182825]/25 px-5 text-[0.625rem] font-semibold tracking-[0.16em] text-white uppercase backdrop-blur-md transition-colors hover:bg-[#182825]/45 sm:right-8 sm:top-8"
         onClick={finishIntro}
         type="button"
       >
