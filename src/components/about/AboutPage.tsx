@@ -152,7 +152,7 @@ function AboutHero({ data }: { data: AboutPageData }) {
           </div>
         </div>
         <div className="relative min-h-72 overflow-hidden border-t border-brand-line lg:min-h-full lg:border-t-0 lg:border-l">
-          <Media asset={hero.image} className="absolute inset-0 h-full w-full object-cover object-[center_48%]" loading="eager" priority sizes="(min-width: 1024px) 60vw, 100vw" />
+          <Media asset={hero.image} className="absolute inset-0 h-full w-full object-cover object-[center_48%]" preload sizes="(min-width: 1024px) 60vw, 100vw" />
         </div>
       </div>
     </section>
