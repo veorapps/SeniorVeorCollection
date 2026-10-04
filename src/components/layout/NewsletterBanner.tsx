@@ -29,7 +29,7 @@ export function NewsletterBanner({ description, title, variant = "default" }: Ne
 
   return (
     <section className={cn("overflow-hidden border-y border-brand-line", isHome ? "bg-[#fffdf9]" : "bg-brand-sand")} aria-labelledby="newsletter-title">
-      <div className={cn("mx-auto grid gap-4 px-[var(--sv-gutter)] md:items-center", isHome ? "max-w-[var(--sv-container-max)] py-2 md:grid-cols-[1fr_1fr] lg:pr-10 lg:pl-24" : "max-w-[var(--sv-container-max)] py-5 md:grid-cols-[1fr_minmax(20rem,0.85fr)] md:py-6")}>
+      <div className={cn("mx-auto grid gap-6 px-[var(--sv-gutter)] md:items-center", isHome ? "max-w-[var(--sv-container-max)] py-[var(--sv-section-space-compact)] md:grid-cols-[1fr_1fr] lg:pr-10 lg:pl-24" : "max-w-[var(--sv-container-max)] py-[var(--sv-section-space-compact)] md:grid-cols-[1fr_minmax(20rem,0.85fr)]")}>
         <div><h2 className={cn("font-display leading-none text-brand-ink", isHome ? "text-[1.25rem] tracking-[0.12em] uppercase" : "text-[1.55rem]")} id="newsletter-title">{title}</h2><p className={cn("max-w-md text-brand-muted", isHome ? "mt-1 text-[0.6875rem] leading-4" : "mt-2 text-[0.75rem] leading-4")}>{description}</p></div>
         <form className="min-w-0" noValidate onSubmit={handleSubmit}>
           <label className="sr-only" htmlFor="newsletter-email">E-posta adresiniz</label>

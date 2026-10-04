@@ -10,7 +10,7 @@ export function IngredientStrip({ data }: { data: HomeIngredientsSection }) {
   if (ingredients.length === 0) return null;
 
   return (
-    <section aria-label={data.title} className="border-y border-brand-line bg-[#fffdf9] py-2">
+    <section aria-label={data.title} className="border-y border-brand-line bg-[#fffdf9] py-[var(--sv-section-space-compact)]">
       <Container size="wide">
         <div className="flex min-w-0 items-center gap-3 sm:gap-5">
           <h2 className="w-[5.25rem] shrink-0 font-display text-[0.75rem] leading-[1.15] tracking-[0.08em] text-[#6e5635] uppercase sm:w-[6rem]">

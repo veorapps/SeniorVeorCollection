@@ -11,7 +11,7 @@ export function ProductCommunitySections({ product, relatedProducts }: { product
 
   return (
     <>
-      <section className="border-b border-brand-line bg-brand-paper py-7">
+      <section className="border-b border-brand-line bg-brand-paper py-[var(--sv-section-space)]">
         <Container>
           <h2 className="text-[0.625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase">Müşteri Yorumları</h2>
           <div className="mt-4 grid border-y border-brand-line lg:grid-cols-[12rem_1fr] lg:divide-x lg:divide-brand-line">
@@ -44,7 +44,7 @@ export function ProductCommunitySections({ product, relatedProducts }: { product
         </Container>
       </section>
 
-      <section className="border-b border-brand-line py-7">
+      <section className="border-b border-brand-line py-[var(--sv-section-space)]">
         <Container className="grid gap-8 lg:grid-cols-[1.8fr_1fr] lg:divide-x lg:divide-brand-line">
           {relatedProducts.length ? <div className="min-w-0 lg:pr-8"><div className="flex items-end justify-between gap-4"><div><p className="text-[0.625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase">Sizin İçin Önerilenler</p><h2 className="mt-1 font-display text-3xl text-brand-ink">Benzer İmzalar</h2></div><Link className="shrink-0 border-b border-brand-gold pb-1 text-[0.625rem] font-semibold tracking-[0.08em] text-brand-teal uppercase" href="/parfumler">Tümünü Gör</Link></div><div className="mt-5"><ProductCarousel cardClassName="lg:w-[calc((100%-2.25rem)/4)]" products={relatedProducts} variant="showcase" /></div></div> : null}
           <div className="lg:pl-8">

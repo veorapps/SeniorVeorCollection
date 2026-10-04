@@ -46,7 +46,7 @@ export function Footer({ settings }: FooterProps) {
 
   return (
     <footer className="bg-[#222927] text-brand-ivory">
-      <div className="mx-auto grid max-w-[59rem] grid-cols-2 gap-x-7 gap-y-7 px-[var(--sv-gutter)] py-6 md:grid-cols-3 lg:grid-cols-[1.25fr_0.72fr_0.92fr_0.72fr_1.22fr] lg:gap-x-6 lg:px-0 lg:py-2.5">
+      <div className="mx-auto grid max-w-[59rem] grid-cols-2 gap-x-7 gap-y-8 px-[var(--sv-gutter)] py-8 md:grid-cols-3 lg:grid-cols-[1.25fr_0.72fr_0.92fr_0.72fr_1.22fr] lg:gap-x-6 lg:px-0 lg:py-7">
         <div className="col-span-2 md:col-span-1 lg:border-r lg:border-brand-ivory/15 lg:pr-6">
           <Link aria-label={settings.siteName} className="inline-flex items-center gap-2 text-brand-gold-soft" href="/">
             <BrandMark />
@@ -92,7 +92,7 @@ export function Footer({ settings }: FooterProps) {
       </div>
 
       <div className="mx-auto max-w-[59rem] px-[var(--sv-gutter)] lg:px-0">
-        <div className="flex flex-col gap-2 border-t border-brand-ivory/15 py-2 text-[0.5625rem] text-brand-ivory/65 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-t border-brand-ivory/15 py-4 text-[0.5625rem] text-brand-ivory/65 sm:flex-row sm:items-center sm:justify-between">
           <span>{settings.copyright}</span>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-brand-ivory">
             <span className="flex items-center gap-3 text-[0.6875rem]">{settings.paymentProviders.map((provider) => <PaymentMark key={provider} provider={provider} />)}</span>

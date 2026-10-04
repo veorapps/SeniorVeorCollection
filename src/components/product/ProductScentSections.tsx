@@ -27,7 +27,7 @@ export function ProductScentProfileSection({ product }: { product: Product }) {
   ];
 
   return (
-    <section className="border-y border-brand-line bg-brand-paper py-7">
+    <section className="border-y border-brand-line bg-brand-paper py-[var(--sv-section-space)]">
       <Container>
         <p className="text-[0.625rem] font-semibold tracking-[0.16em] text-brand-gold uppercase">
           Koku Ailesi: {product.subtitle.replaceAll("·", " · ")}
@@ -63,7 +63,7 @@ function PerformanceMeter({ description, label, value }: { description: string; 
 
 export function ProductIngredientsSection({ product }: { product: Product }) {
   return (
-    <section className="border-b border-brand-line bg-brand-ivory py-5">
+    <section className="border-b border-brand-line bg-brand-ivory py-[var(--sv-section-space-compact)]">
       <Container className="grid gap-5 lg:grid-cols-[1.1fr_1.9fr] lg:items-center">
         <div><h2 className="font-display text-[1.5rem] text-brand-ink">İçerik & Uyumluluk</h2><p className="mt-1.5 text-[0.6875rem] leading-5 text-brand-muted">{product.ingredients}</p></div>
         <div className="grid gap-3 sm:grid-cols-2">{product.compliance.map((item) => { const Icon = complianceIcons[item.icon as keyof typeof complianceIcons] ?? ShieldCheck; return <div className="flex gap-3 border-l border-brand-line pl-4" key={item.id}><Icon aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-brand-gold" strokeWidth={1.35} /><div><h3 className="text-[0.625rem] font-semibold tracking-[0.08em] text-brand-ink uppercase">{item.label}</h3><p className="mt-1 text-[0.6875rem] leading-4 text-brand-muted">{item.description}</p></div></div>; })}</div>

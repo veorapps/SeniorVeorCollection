@@ -24,7 +24,7 @@ export function PackagingBand({ data }: { data: HomePackagingSection }) {
             sizes="(min-width: 1024px) 30vw, 100vw"
           />
         </div>
-        <div className="flex items-center px-6 py-5 sm:px-9 lg:px-3 lg:py-3">
+        <div className="flex items-center px-6 py-[var(--sv-section-space-compact)] sm:px-9 lg:px-3">
           <div>
             <h2 className="font-display text-[1.5rem] leading-[0.95] text-[#5c482d] lg:whitespace-nowrap lg:text-[1rem]">
               {data.title}
@@ -42,7 +42,7 @@ export function PackagingBand({ data }: { data: HomePackagingSection }) {
           </div>
         </div>
         {benefits.length > 0 ? (
-          <div className="p-3 sm:p-4 lg:py-2 lg:pr-6 lg:pl-0">
+          <div className="p-3 py-[var(--sv-section-space-compact)] sm:px-4 lg:pr-6 lg:pl-0">
             <div className="grid h-full grid-cols-3 border border-brand-teal bg-brand-teal text-brand-ivory">
               {benefits.map((item) => {
                 const Icon = iconByName[item.icon as keyof typeof iconByName] ?? ShieldCheck;

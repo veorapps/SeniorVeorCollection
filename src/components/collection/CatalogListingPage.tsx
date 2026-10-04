@@ -46,7 +46,7 @@ export function CatalogListingPage({ activeFamily, data, mode, products, sort }:
           </Container>
         </section>
       ) : null}
-      <section className={isCollection ? "pb-2" : "py-7 lg:py-8"}>
+      <section className="py-[var(--sv-section-space)]">
         <Container>
           {!isCollection ? <SectionHeading description={listing.description} eyebrow={listing.eyebrow} level={1} title={listing.title} /> : null}
           <div className={isCollection ? "" : "mt-7"}><CatalogControls activeFamily={activeFamily} compact={isCollection} families={data.scentFamilies.items} sort={sort} /></div>
@@ -55,7 +55,7 @@ export function CatalogListingPage({ activeFamily, data, mode, products, sort }:
         </Container>
       </section>
       {isCollection && data.scentFamilies.enabled ? (
-        <section className="border-y border-brand-line bg-[#f8f3ed] py-3">
+        <section className="border-y border-brand-line bg-[#f8f3ed] py-[var(--sv-section-space-compact)]">
           <Container>
             <h2 className="text-center font-display text-[1.375rem] leading-tight tracking-[0.06em] text-[#705630]">{data.scentFamilies.title}</h2>
             <div className="mt-2 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">

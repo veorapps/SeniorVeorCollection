@@ -35,7 +35,7 @@ function Meter({ icon: Icon, label, value, level, segments }: { icon: typeof Sun
 
 export function ScentDiscovery({ data }: { data: HomeScentDiscoverySection }) {
   return (
-    <section className="border-y border-brand-line bg-[#fffdfa] py-5 lg:py-2">
+    <section className="border-y border-brand-line bg-[#fffdfa] py-[var(--sv-section-space)]">
       <Container className="max-w-[62rem]!">
         <div className="grid items-center gap-6 md:grid-cols-[0.85fr_1.25fr] lg:grid-cols-[0.85fr_1.25fr_1fr] lg:gap-5">
           <div>
