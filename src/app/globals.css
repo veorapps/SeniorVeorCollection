@@ -15,11 +15,18 @@ body {
   min-height: 100%;
   background: var(--sv-color-ivory);
   color: var(--sv-color-ink);
+  caret-color: transparent;
   font-family: var(--font-body), Arial, sans-serif;
   font-size: 1rem;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   font-synthesis: none;
+}
+
+input,
+textarea,
+[contenteditable="true"] {
+  caret-color: auto;
 }
 
 html[data-intro-seen="true"] .site-intro {
