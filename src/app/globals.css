@@ -92,6 +92,11 @@ select:not(:disabled) {
   outline-offset: 3px;
 }
 
+/* The surrounding search field carries the focus state, avoiding a second inset outline. */
+.search-panel-enter input:focus-visible {
+  outline: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
