@@ -45,7 +45,7 @@ export const mockHomePage: HomePageData = {
     { id: "featured-before", name: "Before", image: { src: "/images/products/group-five.jpg", alt: "Before parfüm şişesi", width: 900, height: 1600 }, imageCrop: { x: 706, y: 770, width: 185, height: 365 } },
   ] },
   scentDiscovery: { id: "home-discovery", type: "scent-discovery", enabled: true, order: 4, title: "Kokunuzu Keşfedin", description: "Doğanın en değerli notaları, ustalıkla bir araya geldi. Size en uygun kokuyu keşfedin.", cta: { label: "Keşfetmeye Başla", href: "/koleksiyon" }, image: { src: "/images/home/scent-pyramid-v1.png", alt: "Narenciye, çiçek ve odunsu amber notalarından oluşan koku piramidi", width: 1254, height: 1254 }, topNotes: ["Bergamot", "Mandarin", "Pembe Biber"], middleNotes: ["Gül", "Yasemin", "Menekşe"], baseNotes: ["Oud", "Amber", "Misk", "Vanilya"], longevityLabel: "8–10 Saat", longevityLevel: 4, intensityLabel: "Yüksek", intensityLevel: 4, meterSegments: 6, usageTimes: ["day", "night"], seasons: ["summer"] },
-  ingredients: { id: "home-ingredients", type: "ingredients", enabled: true, order: 5, title: "Notaların İzini Keşfedin", items: [
+  ingredients: { id: "home-ingredients", type: "ingredients", enabled: false, order: 5, title: "Notaların İzini Keşfedin", items: [
     { name: "Bergamot", slug: "bergamot" },
     { name: "Gül", slug: "gul" },
     { name: "Oud", slug: "oud" },
