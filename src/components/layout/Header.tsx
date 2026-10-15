@@ -164,8 +164,8 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
       {isSearchOpen ? (
         <div className="fixed inset-0 z-50 bg-brand-ink/40" role="presentation">
           <button aria-label="Aramayı kapat" className="absolute inset-0" onClick={closeSearch} type="button" />
-          <section aria-label="Parfüm ara" aria-modal="true" className="search-panel-enter relative border-b border-brand-line bg-brand-paper shadow-float" role="dialog">
-            <div className="mx-auto max-w-[76rem] px-[var(--sv-gutter)] py-5 sm:py-7">
+          <section aria-label="Parfüm ara" aria-modal="true" className="search-panel-enter relative mx-auto mt-4 w-[calc(100%-2rem)] max-w-5xl border border-brand-line bg-brand-paper shadow-float sm:mt-8" role="dialog">
+            <div className="px-5 py-5 sm:px-8 sm:py-7">
               <div className="flex items-start justify-between gap-5">
                 <div>
                   <p className="flex items-center gap-2 text-[0.625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase"><Sparkles aria-hidden="true" className="size-3.5" /> Koku keşfi</p>
@@ -174,11 +174,11 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
                 <IconButton aria-label="Aramayı kapat" className="mt-0.5 border border-brand-line" onClick={closeSearch}><X aria-hidden="true" className="size-5" strokeWidth={1.5} /></IconButton>
               </div>
 
-              <form className="mt-5 flex border border-brand-line bg-brand-ivory p-1.5 sm:mt-6" onSubmit={(event) => { event.preventDefault(); submitSearch(); }}>
+              <form className="mt-5 flex overflow-hidden border border-brand-line bg-brand-ivory transition-colors focus-within:border-brand-gold sm:mt-6" onSubmit={(event) => { event.preventDefault(); submitSearch(); }}>
                 <label className="sr-only" htmlFor="site-search">Parfüm adı veya nota ara</label>
-                <Search aria-hidden="true" className="my-auto ml-3 size-5 shrink-0 text-brand-gold" strokeWidth={1.5} />
-                <input autoFocus className="min-h-12 min-w-0 flex-1 bg-transparent px-3 text-sm text-brand-ink outline-none placeholder:text-brand-muted" id="site-search" onChange={(event) => setSearchQuery(event.target.value)} placeholder="Parfüm adı veya notasıyla ara" value={searchQuery} />
-                <button className="min-h-12 shrink-0 bg-brand-teal px-5 text-[0.6875rem] font-semibold tracking-[0.12em] text-brand-ivory uppercase transition-colors hover:bg-brand-ink sm:px-8" type="submit">Keşfet</button>
+                <Search aria-hidden="true" className="my-auto ml-4 size-5 shrink-0 text-brand-gold" strokeWidth={1.5} />
+                <input autoFocus className="min-h-14 min-w-0 flex-1 bg-transparent px-3 text-sm text-brand-ink outline-none placeholder:text-brand-muted" id="site-search" onChange={(event) => setSearchQuery(event.target.value)} placeholder="Parfüm adı veya notasıyla ara" value={searchQuery} />
+                <button className="min-h-14 shrink-0 bg-brand-teal px-5 text-[0.6875rem] font-semibold tracking-[0.12em] text-brand-ivory uppercase transition-colors hover:bg-brand-ink sm:px-8" type="submit">Keşfet</button>
               </form>
 
               <div className="mt-5 border-t border-brand-line pt-4 sm:mt-6">
