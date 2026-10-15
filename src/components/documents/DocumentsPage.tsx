@@ -11,10 +11,10 @@ export function DocumentsPage({ certificates, data }: { certificates: Certificat
   return (
     <main>
       {data.hero.enabled ? (
-        <section className="relative isolate overflow-hidden border-y border-brand-line bg-brand-sand">
+        <section className="relative isolate overflow-hidden border-y border-brand-line bg-brand-sand lg:min-h-[calc(100svh-4.5rem)]">
           <Media asset={data.hero.image} className="absolute inset-0 h-full w-full object-cover object-[68%_center]" loading="eager" sizes="100vw" />
           <div className="absolute inset-0 bg-linear-to-r from-brand-ivory via-brand-ivory/85 to-transparent" />
-          <Container className="relative py-[var(--sv-section-space)]">
+          <Container className="relative py-[var(--sv-section-space)] lg:flex lg:min-h-[calc(100svh-4.5rem)] lg:flex-col lg:justify-center">
             <div className="max-w-xl">
               <p className="text-[0.625rem] font-semibold tracking-[0.2em] text-brand-gold uppercase">{data.hero.eyebrow}</p>
               <h1 className="mt-3 font-display text-[2.75rem] leading-[0.92] text-brand-ink sm:text-5xl">{data.hero.title}</h1>
