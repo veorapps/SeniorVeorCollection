@@ -29,7 +29,7 @@ export function AboutPage({ data }: { data: AboutPageData }) {
 function AboutLead({ data }: { data: AboutPageData }) {
   return (
     <section className="border-b border-brand-line bg-[#f8f3ed]">
-      <Container className="grid gap-8 py-[var(--sv-section-space)] lg:grid-cols-[0.16fr_1fr_0.32fr] lg:items-center lg:gap-10">
+      <Container className="grid gap-8 py-[var(--sv-space-3xl)] lg:grid-cols-[0.16fr_1fr_0.32fr] lg:items-center lg:gap-10">
         <p className="text-[0.625rem] font-semibold tracking-[0.22em] text-brand-gold uppercase lg:[writing-mode:vertical-rl] lg:rotate-180">Hakkımızda</p>
         <div className="max-w-[44rem]">
           <p className="text-[0.625rem] font-semibold tracking-[0.19em] text-brand-gold uppercase">Senior Veor Collection</p>
@@ -56,7 +56,7 @@ function AboutCtaBand({ data }: { data: AboutPageData }) {
         <Media asset={band.image} className="h-full w-full object-cover object-[52%_55%]" sizes="38vw" />
         <div className="absolute inset-0 bg-linear-to-r from-brand-teal via-brand-teal/70 to-transparent" />
       </div>
-      <Container className="flex min-h-[5.5rem] flex-col justify-center gap-5 py-[var(--sv-section-space-compact)] sm:flex-row sm:items-center sm:justify-between lg:pr-[34%]">
+      <Container className="flex min-h-[8rem] flex-col justify-center gap-5 py-[var(--sv-section-space)] sm:flex-row sm:items-center sm:justify-between lg:pr-[34%]">
         <div>
           <h2 className="font-display text-[1.4rem] leading-none tracking-[0.04em]">{band.title}</h2>
           <p className="mt-2 text-[0.625rem] leading-4 text-brand-ivory/75">{band.description}</p>
@@ -72,13 +72,13 @@ function PackagingSection({ data }: { data: AboutPageData }) {
   return (
     <section className="scroll-mt-20 border-y border-brand-line bg-brand-sand" id="packaging">
       <Container className="grid max-w-[64rem] lg:grid-cols-[0.72fr_1.28fr] lg:items-stretch">
-        <div className="flex flex-col justify-center py-[var(--sv-section-space)] lg:pr-8">
+        <div className="flex flex-col justify-center py-[var(--sv-space-3xl)] lg:pr-8">
           <p className="text-[0.5625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase">{packaging.eyebrow}</p>
           <h2 className="mt-2 max-w-[20rem] font-display text-[1.65rem] leading-[1.02] text-brand-ink lg:text-[1.45rem]">{packaging.title}</h2>
           <p className="mt-3 max-w-[20rem] text-[0.6875rem] leading-[1.5] text-brand-muted lg:mt-2 lg:text-[0.625rem]">{packaging.description}</p>
           <Link className="mt-4 inline-flex min-h-9 w-fit items-center bg-brand-teal px-4 text-[0.5625rem] font-semibold tracking-[0.08em] text-brand-ivory uppercase lg:mt-3" href={packaging.cta.href}>{packaging.cta.label}<span aria-hidden="true" className="ml-4 text-sm leading-none">→</span></Link>
         </div>
-        <div className="grid grid-cols-3 gap-1 pb-[var(--sv-section-space)] lg:py-[var(--sv-section-space-compact)]">
+        <div className="grid grid-cols-3 gap-1 pb-[var(--sv-space-3xl)] lg:py-[var(--sv-space-3xl)]">
           {packaging.gallery.map((asset, index) => <Media asset={asset} className={`aspect-[4/3] h-full w-full bg-brand-ivory ${index === 1 ? "object-contain p-5" : "object-cover"}`} key={asset.src} sizes="(min-width: 1024px) 20vw, 33vw" />)}
         </div>
       </Container>
@@ -89,7 +89,7 @@ function PackagingSection({ data }: { data: AboutPageData }) {
 function JourneySection({ data }: { data: AboutPageData }) {
   const items = data.journey.items.filter((item) => item.enabled).sort((a, b) => a.order - b.order);
   return (
-    <section className="scroll-mt-20 bg-brand-ivory py-[var(--sv-section-space)]" id="journey">
+    <section className="scroll-mt-20 bg-brand-ivory py-[var(--sv-space-3xl)]" id="journey">
       <Container className="max-w-[64rem]">
         <p className="text-center text-[0.5625rem] font-semibold tracking-[0.2em] text-brand-gold uppercase">Her Şişenin Arkasındaki Süreç</p>
         <h2 className="text-center font-display text-[1.25rem] tracking-[0.12em] text-brand-ink uppercase">{data.journey.title}</h2>
@@ -112,7 +112,7 @@ function JourneySection({ data }: { data: AboutPageData }) {
 
 function ValuesSection({ data }: { data: AboutPageData }) {
   return (
-    <section className="scroll-mt-20 border-y border-brand-line bg-brand-paper py-[var(--sv-section-space)]" id="values">
+    <section className="scroll-mt-20 border-y border-brand-line bg-brand-paper py-[var(--sv-space-3xl)]" id="values">
       <Container className="grid max-w-[70rem] gap-7 lg:grid-cols-[0.3fr_1fr] lg:items-end">
         <div className="lg:pb-2">
           <p className="text-[0.5625rem] font-semibold tracking-[0.2em] text-brand-gold uppercase">Bizi Biz Yapan</p>
@@ -130,7 +130,7 @@ function ValuesSection({ data }: { data: AboutPageData }) {
 function StoryAndCraft({ data }: { data: AboutPageData }) {
   return (
     <section className="scroll-mt-20 border-b border-brand-line bg-brand-ivory" id="story-craft">
-      <div className="mx-auto grid max-w-[100rem] lg:min-h-[18rem] lg:grid-cols-[0.72fr_0.96fr_1.32fr]">
+      <div className="mx-auto grid max-w-[100rem] lg:min-h-[25rem] lg:grid-cols-[0.72fr_0.96fr_1.32fr]">
         {data.story.enabled ? (
           <div className="relative min-h-64 overflow-hidden bg-[#efe4d4] lg:min-h-full">
             <div className="absolute inset-6 border border-brand-gold/25" />
@@ -139,7 +139,7 @@ function StoryAndCraft({ data }: { data: AboutPageData }) {
         ) : null}
 
         {data.story.enabled ? (
-          <div className="flex flex-col justify-center px-6 py-[var(--sv-section-space)] lg:border-r lg:border-brand-line lg:px-9">
+          <div className="flex flex-col justify-center px-6 py-[var(--sv-space-3xl)] lg:border-r lg:border-brand-line lg:px-9">
             <CompactSectionHeading eyebrow={data.story.eyebrow} title={data.story.title} />
             {data.story.paragraphs.map((paragraph) => <p className="mt-4 text-[0.75rem] leading-[1.55] text-brand-muted" key={paragraph}>{paragraph}</p>)}
             <p className="mt-5 font-display text-[0.9375rem] italic text-brand-gold">— Senior Veor Collection</p>
@@ -147,7 +147,7 @@ function StoryAndCraft({ data }: { data: AboutPageData }) {
         ) : null}
 
         {data.craft.enabled ? (
-          <div className="flex flex-col justify-center bg-[#f9f5ef] px-6 py-[var(--sv-section-space)] lg:px-10">
+          <div className="flex flex-col justify-center bg-[#f9f5ef] px-6 py-[var(--sv-space-3xl)] lg:px-10">
             <CompactSectionHeading description={data.craft.description} eyebrow={data.craft.eyebrow} title={data.craft.title} />
             <BenefitList className="mt-6" items={data.craft.benefits} />
           </div>
