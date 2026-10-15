@@ -129,7 +129,7 @@ function ValuesSection({ data }: { data: AboutPageData }) {
 
 function StoryAndCraft({ data }: { data: AboutPageData }) {
   return (
-    <section className="scroll-mt-20 border-b border-brand-line bg-brand-ivory" id="story-craft">
+    <section className="scroll-mt-20 mt-[var(--sv-section-space-compact)] border-y border-brand-line bg-brand-ivory" id="story-craft">
       <div className="mx-auto grid max-w-[100rem] lg:min-h-[25rem] lg:grid-cols-[0.72fr_0.96fr_1.32fr]">
         {data.story.enabled ? (
           <div className="relative min-h-64 overflow-hidden bg-[#efe4d4] lg:min-h-full">
