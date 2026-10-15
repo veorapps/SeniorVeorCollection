@@ -177,7 +177,7 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
               <form className="mt-5 flex overflow-hidden border border-brand-line bg-brand-ivory transition-colors focus-within:border-brand-gold sm:mt-6" onSubmit={(event) => { event.preventDefault(); submitSearch(); }}>
                 <label className="sr-only" htmlFor="site-search">Parfüm adı veya nota ara</label>
                 <Search aria-hidden="true" className="my-auto ml-4 size-5 shrink-0 text-brand-gold" strokeWidth={1.5} />
-                <input autoFocus className="min-h-14 min-w-0 flex-1 bg-transparent px-3 text-sm text-brand-ink outline-none placeholder:text-brand-muted" id="site-search" onChange={(event) => setSearchQuery(event.target.value)} placeholder="Parfüm adı veya notasıyla ara" value={searchQuery} />
+                <input autoFocus className="min-h-14 min-w-0 flex-1 bg-transparent px-3 text-sm text-brand-ink outline-none placeholder:text-brand-muted focus-visible:outline-none" id="site-search" onChange={(event) => setSearchQuery(event.target.value)} placeholder="Parfüm adı veya notasıyla ara" value={searchQuery} />
                 <button className="min-h-14 shrink-0 bg-brand-teal px-5 text-[0.6875rem] font-semibold tracking-[0.12em] text-brand-ivory uppercase transition-colors hover:bg-brand-ink sm:px-8" type="submit">Keşfet</button>
               </form>
 
