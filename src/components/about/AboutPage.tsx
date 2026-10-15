@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BadgeCheck, Clock3, Droplet, Flower2, Handshake, Heart, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowDown, BadgeCheck, Clock3, Droplet, Flower2, Handshake, Heart, HeartHandshake, ShieldCheck, Sparkles } from "lucide-react";
 import type { AboutPageData, BenefitItem } from "@/domain/models";
 import { Container } from "@/components/ui/Container";
 import { Media } from "@/components/ui/Media";
@@ -14,6 +14,7 @@ export function AboutPage({ data }: { data: AboutPageData }) {
       {data.hero.enabled ? <AboutHero data={data} /> : null}
       {data.trustBar.enabled ? <TrustBar items={data.trustBar.items} variant="home" /> : null}
 
+      <AboutLead data={data} />
       {data.story.enabled || data.craft.enabled ? <StoryAndCraft data={data} /> : null}
 
       {data.values.enabled ? <ValuesSection data={data} /> : null}
@@ -22,6 +23,28 @@ export function AboutPage({ data }: { data: AboutPageData }) {
       {data.ctaBand.enabled ? <AboutCtaBand data={data} /> : null}
       {data.newsletter.enabled ? <NewsletterBanner description={data.newsletter.description} title={data.newsletter.title} variant="home" /> : null}
     </main>
+  );
+}
+
+function AboutLead({ data }: { data: AboutPageData }) {
+  return (
+    <section className="border-b border-brand-line bg-[#f8f3ed]">
+      <Container className="grid gap-8 py-[var(--sv-section-space)] lg:grid-cols-[0.16fr_1fr_0.32fr] lg:items-center lg:gap-10">
+        <p className="text-[0.625rem] font-semibold tracking-[0.22em] text-brand-gold uppercase lg:[writing-mode:vertical-rl] lg:rotate-180">Hakkımızda</p>
+        <div className="max-w-[44rem]">
+          <p className="text-[0.625rem] font-semibold tracking-[0.19em] text-brand-gold uppercase">Senior Veor Collection</p>
+          <h1 className="mt-3 font-display text-[2.8rem] leading-[0.94] text-brand-ink sm:text-[4rem] lg:text-[4.5rem]">Her Şişede Bir Hikâye, Her Damla Bir İz.</h1>
+          <p className="mt-5 max-w-[36rem] text-[0.875rem] leading-6 text-brand-muted">Kokuya yalnızca bir tamamlayıcı olarak değil; zarafeti, hafızayı ve kişisel ifadeyi bir araya getiren bir imza olarak bakıyoruz.</p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link className="inline-flex min-h-10 items-center bg-brand-teal px-5 text-[0.625rem] font-semibold tracking-[0.1em] text-brand-ivory uppercase transition-colors hover:bg-brand-ink" href="#story-craft">Hikâyemizi Keşfet <ArrowDown aria-hidden="true" className="ml-3 size-3.5" /></Link>
+            <Link className="inline-flex min-h-10 items-center border border-brand-gold/75 px-5 text-[0.625rem] font-semibold tracking-[0.1em] text-brand-ink uppercase transition-colors hover:bg-brand-gold-soft" href="#journey">Yolculuğumuz</Link>
+          </div>
+        </div>
+        <div className="relative mx-auto grid aspect-square w-full max-w-[15rem] place-items-center border border-brand-line bg-brand-paper p-7 before:absolute before:inset-3 before:border before:border-brand-gold/35">
+          <Media asset={data.story.image} className="relative z-10 h-full w-full object-contain" sizes="15rem" />
+        </div>
+      </Container>
+    </section>
   );
 }
 
@@ -68,6 +91,7 @@ function JourneySection({ data }: { data: AboutPageData }) {
   return (
     <section className="scroll-mt-20 bg-brand-ivory py-[var(--sv-section-space)]" id="journey">
       <Container className="max-w-[64rem]">
+        <p className="text-center text-[0.5625rem] font-semibold tracking-[0.2em] text-brand-gold uppercase">Her Şişenin Arkasındaki Süreç</p>
         <h2 className="text-center font-display text-[1.25rem] tracking-[0.12em] text-brand-ink uppercase">{data.journey.title}</h2>
         <ol className="mt-4 grid lg:mt-3 lg:grid-cols-6">
           {items.map((item, index) => (
@@ -89,9 +113,13 @@ function JourneySection({ data }: { data: AboutPageData }) {
 function ValuesSection({ data }: { data: AboutPageData }) {
   return (
     <section className="scroll-mt-20 border-y border-brand-line bg-brand-paper py-[var(--sv-section-space)]" id="values">
-      <Container className="max-w-[64rem]">
-        <h2 className="text-center font-display text-[1.25rem] tracking-[0.14em] text-brand-ink uppercase">{data.values.title}</h2>
-        <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:mt-2 lg:grid-cols-5 [&>*:last-child]:col-span-2 sm:[&>*:last-child]:col-span-1">
+      <Container className="grid max-w-[70rem] gap-7 lg:grid-cols-[0.3fr_1fr] lg:items-end">
+        <div className="lg:pb-2">
+          <p className="text-[0.5625rem] font-semibold tracking-[0.2em] text-brand-gold uppercase">Bizi Biz Yapan</p>
+          <h2 className="mt-2 font-display text-[2rem] leading-none text-brand-ink">{data.values.title}</h2>
+          <p className="mt-3 max-w-[15rem] text-[0.6875rem] leading-5 text-brand-muted">Her kararımızı, kalıcı bir deneyim bırakma arzumuz yönlendirir.</p>
+        </div>
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-5 [&>*:last-child]:col-span-2 sm:[&>*:last-child]:col-span-1">
           <BenefitCards items={data.values.items} />
         </div>
       </Container>
@@ -102,25 +130,26 @@ function ValuesSection({ data }: { data: AboutPageData }) {
 function StoryAndCraft({ data }: { data: AboutPageData }) {
   return (
     <section className="scroll-mt-20 border-b border-brand-line bg-brand-ivory" id="story-craft">
-      <div className="mx-auto grid max-w-[100rem] lg:min-h-[12rem] lg:grid-cols-[0.82fr_0.83fr_1.35fr]">
+      <div className="mx-auto grid max-w-[100rem] lg:min-h-[18rem] lg:grid-cols-[0.72fr_0.96fr_1.32fr]">
         {data.story.enabled ? (
-          <div className="relative min-h-60 overflow-hidden bg-brand-sand lg:min-h-full">
-            <Media asset={data.story.image} className="absolute inset-0 h-full w-full object-contain p-10 lg:p-12" sizes="(min-width: 1024px) 28vw, 100vw" />
+          <div className="relative min-h-64 overflow-hidden bg-[#efe4d4] lg:min-h-full">
+            <div className="absolute inset-6 border border-brand-gold/25" />
+            <Media asset={data.story.image} className="absolute inset-0 h-full w-full object-contain p-12 lg:p-16" sizes="(min-width: 1024px) 28vw, 100vw" />
           </div>
         ) : null}
 
         {data.story.enabled ? (
-          <div className="flex flex-col justify-center px-6 py-[var(--sv-section-space)] lg:border-r lg:border-brand-line lg:px-7">
+          <div className="flex flex-col justify-center px-6 py-[var(--sv-section-space)] lg:border-r lg:border-brand-line lg:px-9">
             <CompactSectionHeading eyebrow={data.story.eyebrow} title={data.story.title} />
-            {data.story.paragraphs.map((paragraph) => <p className="mt-3 text-[0.6875rem] leading-[1.45] text-brand-muted lg:mt-2 lg:text-[0.625rem]" key={paragraph}>{paragraph}</p>)}
-            <p className="mt-4 font-display text-[0.875rem] italic text-brand-gold lg:mt-2">— Senior Veor Collection</p>
+            {data.story.paragraphs.map((paragraph) => <p className="mt-4 text-[0.75rem] leading-[1.55] text-brand-muted" key={paragraph}>{paragraph}</p>)}
+            <p className="mt-5 font-display text-[0.9375rem] italic text-brand-gold">— Senior Veor Collection</p>
           </div>
         ) : null}
 
         {data.craft.enabled ? (
-          <div className="flex flex-col justify-center px-6 py-[var(--sv-section-space)] lg:px-8">
+          <div className="flex flex-col justify-center bg-[#f9f5ef] px-6 py-[var(--sv-section-space)] lg:px-10">
             <CompactSectionHeading description={data.craft.description} eyebrow={data.craft.eyebrow} title={data.craft.title} />
-            <BenefitList className="mt-5 lg:mt-4" items={data.craft.benefits} />
+            <BenefitList className="mt-6" items={data.craft.benefits} />
           </div>
         ) : null}
       </div>
