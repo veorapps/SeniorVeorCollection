@@ -28,8 +28,8 @@ export function AboutPage({ data }: { data: AboutPageData }) {
 
 function AboutLead({ data }: { data: AboutPageData }) {
   return (
-    <section className="border-b border-brand-line bg-[#f8f3ed]">
-      <Container className="grid gap-8 py-[var(--sv-space-3xl)] lg:grid-cols-[0.16fr_1fr_0.32fr] lg:items-center lg:gap-10">
+    <section className="border-b border-brand-line bg-[#f8f3ed] lg:flex lg:min-h-[calc(100svh-4.5rem)] lg:items-center">
+      <Container className="grid gap-8 py-12 lg:grid-cols-[0.16fr_1fr_0.32fr] lg:items-center lg:gap-10 lg:py-10">
         <p className="text-[0.625rem] font-semibold tracking-[0.22em] text-brand-gold uppercase lg:[writing-mode:vertical-rl] lg:rotate-180">Hakkımızda</p>
         <div className="max-w-[44rem]">
           <p className="text-[0.625rem] font-semibold tracking-[0.19em] text-brand-gold uppercase">Senior Veor Collection</p>
