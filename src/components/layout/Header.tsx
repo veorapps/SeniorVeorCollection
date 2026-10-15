@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Heart, Menu, Search, ShoppingBag, UserRound, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Heart, Menu, Search, ShoppingBag, Sparkles, UserRound, X } from "lucide-react";
 import type { AnnouncementItem, MediaAsset, NavigationItem } from "@/domain/models";
 import { IconButton } from "@/components/ui/IconButton";
 import { cn } from "@/lib/cn";
@@ -39,6 +39,8 @@ function BrandLink({ compact = false, logo, siteName }: { compact?: boolean; log
   );
 }
 
+const searchSuggestions = ["Bergamot", "Gül", "Vanilya", "Oud", "Misk", "Yasemin", "Amber"];
+
 export function Header({ announcements, logo, navigation, siteName }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -46,10 +48,28 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
   const router = useRouter();
   const menuPanelRef = useRef<HTMLElement>(null);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
+  const searchSuggestionsRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname() ?? "/";
   const visibleNavigation = navigation.filter((item) => item.enabled).sort((a, b) => a.order - b.order);
   const { cart, wishlist } = useCommerce();
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+
+  function closeSearch() {
+    setIsSearchOpen(false);
+  }
+
+  function submitSearch(value = searchQuery) {
+    const query = value.trim();
+    closeSearch();
+    router.push(query ? `/parfumler?search=${encodeURIComponent(query)}` : "/parfumler");
+  }
+
+  function scrollSearchSuggestions(direction: "previous" | "next") {
+    searchSuggestionsRef.current?.scrollBy({
+      left: direction === "next" ? 220 : -220,
+      behavior: "smooth",
+    });
+  }
 
   useEffect(() => {
     if (!isMenuOpen) return undefined;
@@ -141,7 +161,44 @@ export function Header({ announcements, logo, navigation, siteName }: HeaderProp
           </aside>
         </div>
       ) : null}
-      {isSearchOpen ? <div className="fixed inset-0 z-50 grid place-items-start bg-brand-ink/35 pt-20 px-4" role="presentation"><section aria-label="Ürün ara" aria-modal="true" className="w-full max-w-2xl bg-brand-paper p-5 shadow-float" role="dialog"><div className="flex justify-between gap-4"><h2 className="font-display text-3xl text-brand-ink">Parfüm Ara</h2><IconButton aria-label="Aramayı kapat" onClick={() => setIsSearchOpen(false)}><X aria-hidden="true" /></IconButton></div><form className="mt-5 flex gap-2" onSubmit={(event) => { event.preventDefault(); const value=searchQuery.trim(); setIsSearchOpen(false); router.push(value ? `/parfumler?search=${encodeURIComponent(value)}` : "/parfumler"); }}><label className="sr-only" htmlFor="site-search">Parfüm adı veya nota ara</label><input autoFocus className="min-h-11 flex-1 border border-brand-line px-4 outline-none focus:border-brand-teal" id="site-search" onChange={(event)=>setSearchQuery(event.target.value)} placeholder="Parfüm adı veya nota ara" value={searchQuery} /><button className="min-h-11 bg-brand-teal px-5 text-xs font-semibold tracking-[0.08em] text-brand-ivory uppercase" type="submit">Ara</button></form></section></div> : null}
+      {isSearchOpen ? (
+        <div className="fixed inset-0 z-50 bg-brand-ink/40" role="presentation">
+          <button aria-label="Aramayı kapat" className="absolute inset-0" onClick={closeSearch} type="button" />
+          <section aria-label="Parfüm ara" aria-modal="true" className="search-panel-enter relative border-b border-brand-line bg-brand-paper shadow-float" role="dialog">
+            <div className="mx-auto max-w-[76rem] px-[var(--sv-gutter)] py-5 sm:py-7">
+              <div className="flex items-start justify-between gap-5">
+                <div>
+                  <p className="flex items-center gap-2 text-[0.625rem] font-semibold tracking-[0.18em] text-brand-gold uppercase"><Sparkles aria-hidden="true" className="size-3.5" /> Koku keşfi</p>
+                  <h2 className="mt-1 font-display text-[2rem] leading-none text-brand-ink sm:text-[2.5rem]">Parfümünü Bul</h2>
+                </div>
+                <IconButton aria-label="Aramayı kapat" className="mt-0.5 border border-brand-line" onClick={closeSearch}><X aria-hidden="true" className="size-5" strokeWidth={1.5} /></IconButton>
+              </div>
+
+              <form className="mt-5 flex border border-brand-line bg-brand-ivory p-1.5 sm:mt-6" onSubmit={(event) => { event.preventDefault(); submitSearch(); }}>
+                <label className="sr-only" htmlFor="site-search">Parfüm adı veya nota ara</label>
+                <Search aria-hidden="true" className="my-auto ml-3 size-5 shrink-0 text-brand-gold" strokeWidth={1.5} />
+                <input autoFocus className="min-h-12 min-w-0 flex-1 bg-transparent px-3 text-sm text-brand-ink outline-none placeholder:text-brand-muted" id="site-search" onChange={(event) => setSearchQuery(event.target.value)} placeholder="Parfüm adı veya notasıyla ara" value={searchQuery} />
+                <button className="min-h-12 shrink-0 bg-brand-teal px-5 text-[0.6875rem] font-semibold tracking-[0.12em] text-brand-ivory uppercase transition-colors hover:bg-brand-ink sm:px-8" type="submit">Keşfet</button>
+              </form>
+
+              <div className="mt-5 border-t border-brand-line pt-4 sm:mt-6">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-[0.625rem] font-semibold tracking-[0.15em] text-brand-gold uppercase">Notalardan başla</p>
+                  <div className="flex gap-1">
+                    <IconButton aria-label="Önceki notalar" className="size-8 border border-brand-line" onClick={() => scrollSearchSuggestions("previous")}><ArrowLeft aria-hidden="true" className="size-3.5" /></IconButton>
+                    <IconButton aria-label="Sonraki notalar" className="size-8 border border-brand-line" onClick={() => scrollSearchSuggestions("next")}><ArrowRight aria-hidden="true" className="size-3.5" /></IconButton>
+                  </div>
+                </div>
+                <div className="mt-3 flex snap-x gap-2 overflow-x-auto pb-1 [scrollbar-width:none]" ref={searchSuggestionsRef}>
+                  {searchSuggestions.map((suggestion) => (
+                    <button className="min-h-10 shrink-0 snap-start border border-brand-line bg-brand-paper px-5 text-[0.6875rem] font-semibold tracking-[0.08em] text-brand-ink uppercase transition-all hover:-translate-y-0.5 hover:border-brand-gold hover:bg-brand-gold-soft" key={suggestion} onClick={() => submitSearch(suggestion)} type="button">{suggestion}</button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      ) : null}
     </header>
   );
 }
