@@ -17,13 +17,10 @@ interface ProductSeed {
 
 const productSeeds: ProductSeed[] = [
   { slug: "if-only", name: "If Only", subtitle: "Çiçeksi · Meyvemsi", families: ["floral"], tone: "teal", badges: ["new", "best-seller"], rating: 4.8, reviewCount: 236, top: ["Bergamot", "Mandarin", "Pembe Biber"], middle: ["Yasemin", "Gül", "İris"], base: ["Misk", "Amber", "Sandal Ağacı"] },
+  { slug: "dear-you", name: "Dear You", subtitle: "Çiçeksi · Pudramsı", families: ["floral"], tone: "ivory", badges: ["new"], rating: 0, reviewCount: 0, top: ["Armut", "Bergamot"], middle: ["Gül", "Yasemin"], base: ["Misk", "Vanilya"] },
+  { slug: "someday", name: "Someday", subtitle: "Odunsu · Amber", families: ["woody", "amber"], tone: "teal", badges: ["new"], rating: 0, reviewCount: 0, top: ["Mandarin", "Kakule"], middle: ["Sedir", "Menekşe"], base: ["Amber", "Sandal Ağacı"] },
   { slug: "after-us", name: "After Us", subtitle: "Oryantal · Odunsu", families: ["oriental", "woody"], tone: "ivory", badges: [], rating: 4.6, reviewCount: 52, top: ["Mandarin", "Safran"], middle: ["Gül", "Paçuli"], base: ["Vanilya", "Oud", "Misk"] },
-  { slug: "midnight-veil", name: "Midnight Veil", subtitle: "Odunsu · Baharatlı", families: ["woody"], tone: "teal", badges: ["best-seller"], rating: 4.9, reviewCount: 74, top: ["Karabiber", "Kakule"], middle: ["Tütsü", "Sedir"], base: ["Oud", "Amber", "Labdanum"] },
-  { slug: "golden-sillage", name: "Golden Sillage", subtitle: "Amber · Vanilya", families: ["amber"], tone: "gold", badges: [], rating: 4.8, reviewCount: 58, top: ["Armut", "Bergamot"], middle: ["Portakal Çiçeği", "Heliotrop"], base: ["Vanilya", "Tonka", "Amber"] },
-  { slug: "velvet-accord", name: "Velvet Accord", subtitle: "Miskus · Çiçeksi", families: ["floral", "unisex"], tone: "teal", badges: [], rating: 4.8, reviewCount: 67, top: ["Limon", "Neroli"], middle: ["Beyaz Çiçekler", "İris"], base: ["Beyaz Misk", "Kaşmir Ağacı"] },
-  { slug: "rouge-eclipse", name: "Rouge Éclipse", subtitle: "Amber · Baharatlı", families: ["amber", "oriental"], tone: "gold", badges: ["limited"], rating: 4.7, reviewCount: 63, top: ["Vişne", "Pembe Biber"], middle: ["Gül", "Tarçın"], base: ["Amber", "Vanilya", "Benzoin"] },
-  { slug: "forest-whisper", name: "Forest Whisper", subtitle: "Odunsu · Aromatik", families: ["woody", "unisex"], tone: "teal", badges: [], rating: 4.6, reviewCount: 41, top: ["Adaçayı", "Ardıç"], middle: ["Menekşe Yaprağı", "Sedir"], base: ["Vetiver", "Misk", "Yosun"] },
-  { slug: "azure-breeze", name: "Azure Breeze", subtitle: "Fresh · Sitrus", families: ["fresh", "unisex"], tone: "gold", badges: ["new"], rating: 4.4, reviewCount: 39, top: ["Greyfurt", "Limon"], middle: ["Portakal Çiçeği", "Deniz Esintisi"], base: ["Beyaz Misk", "Ambergris"] },
+  { slug: "before", name: "Before", subtitle: "Amber · Misk", families: ["amber"], tone: "gold", badges: ["new"], rating: 0, reviewCount: 0, top: ["Limon", "Pembe Biber"], middle: ["İris", "Portakal Çiçeği"], base: ["Amber", "Beyaz Misk"] },
 ];
 
 function noteList(notes: string[]) {
