@@ -29,7 +29,15 @@ export function BlogListingPage({ activeCategory, categories, data, featuredPost
             </div>
           </Container>
         </section>
-      ) : null}
+      ) : (
+        <section className="border-b border-brand-line bg-[#f8f3ed]">
+          <Container className="py-10 sm:py-14">
+            <p className="text-[0.625rem] font-semibold tracking-[0.2em] text-brand-gold uppercase">Koku Rehberi</p>
+            <h1 className="mt-2 max-w-[38rem] font-display text-[2.5rem] leading-[0.96] text-brand-ink sm:text-[3.5rem]">Kokunun Ardındaki Hikâyeler</h1>
+            <p className="mt-4 max-w-[36rem] text-[0.8125rem] leading-5 text-brand-muted">Parfüm notalarından kullanım önerilerine, her kokunun ardındaki incelikleri keşfedin.</p>
+          </Container>
+        </section>
+      )}
 
       <section>
         <div className="border-b border-brand-line bg-brand-paper py-4">
@@ -48,9 +56,9 @@ export function BlogListingPage({ activeCategory, categories, data, featuredPost
             </nav>
           </Container>
         </div>
-        <Container className="py-[var(--sv-section-space)]" style={{ maxWidth: "56rem" }}>
-          {featuredPost && !activeCategory ? <div className="grid items-stretch gap-3 lg:h-[13.25rem] lg:grid-cols-[2.2fr_1fr]"><ArticleCard featured post={featuredPost} />{data.newsletter.enabled ? <BlogNewsletterCard benefits={data.newsletter.benefits} description={data.newsletter.description} title={data.newsletter.title} /> : null}</div> : null}
-          <div className={activeCategory ? "mt-7" : "mt-4"} id="yazilar">{activeCategory ? <SectionHeading title={`${categories.find((item) => item.slug === activeCategory)?.name ?? "Blog"} Yazıları`} /> : null}<div className={`${activeCategory ? "mt-5" : ""} grid auto-rows-fr gap-3 sm:grid-cols-2 lg:grid-cols-4`}>{posts.filter((post) => post.id !== featuredPost?.id || Boolean(activeCategory)).map((post) => <ArticleCard key={post.id} post={post} />)}</div></div>
+        <Container className="py-[var(--sv-space-3xl)]" style={{ maxWidth: "72rem" }}>
+          {featuredPost && !activeCategory ? <div className="grid items-stretch gap-4 lg:min-h-[19rem] lg:grid-cols-[1.8fr_0.82fr]"><ArticleCard featured post={featuredPost} />{data.newsletter.enabled ? <BlogNewsletterCard benefits={data.newsletter.benefits} description={data.newsletter.description} title={data.newsletter.title} /> : null}</div> : null}
+          <div className={activeCategory ? "mt-8" : "mt-6"} id="yazilar">{activeCategory ? <SectionHeading title={`${categories.find((item) => item.slug === activeCategory)?.name ?? "Blog"} Yazıları`} /> : null}<div className={`${activeCategory ? "mt-6" : ""} grid auto-rows-fr gap-4 sm:grid-cols-2 lg:grid-cols-4`}>{posts.filter((post) => post.id !== featuredPost?.id || Boolean(activeCategory)).map((post) => <ArticleCard key={post.id} post={post} />)}</div></div>
         </Container>
       </section>
     </main>
