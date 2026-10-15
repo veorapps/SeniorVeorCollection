@@ -21,13 +21,13 @@ export function HomePage({ data, featuredProducts }: HomePageProps) {
 
   return (
     <main>
-      <section className="relative isolate min-h-[53rem] overflow-hidden border-b border-brand-line bg-[#f7eee5] sm:min-h-[100svh]">
+    <section className="relative isolate min-h-[53rem] overflow-hidden border-b border-brand-line bg-[#f7eee5] sm:min-h-[calc(100svh-var(--sv-home-chrome-height))]">
         <picture className="absolute inset-0 block">
           {hero.mobileImage ? <source media="(max-width: 639px)" srcSet={hero.mobileImage.src} /> : null}
           <Media asset={hero.desktopImage} className="absolute inset-0 h-full w-full translate-y-28 object-cover object-center sm:translate-y-0" loading="eager" sizes="100vw" />
         </picture>
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[25rem] bg-linear-to-b from-[#fffaf4]/80 via-[#fffaf4]/45 to-transparent sm:inset-y-0 sm:right-auto sm:h-auto sm:w-[54%] sm:bg-linear-to-r sm:from-[#fffaf4]/45 sm:via-[#fffaf4]/20 sm:to-transparent" />
-        <Container className="relative flex min-h-[53rem] items-start pt-11 pb-8 sm:min-h-[100svh] sm:items-center sm:py-7">
+      <Container className="relative flex min-h-[53rem] items-start pt-11 pb-8 sm:min-h-[calc(100svh-var(--sv-home-chrome-height))] sm:items-center sm:py-7">
           <div className="max-w-[34rem] lg:ml-9 xl:ml-0">
             <p className="text-[0.625rem] font-semibold tracking-[0.22em] text-brand-gold uppercase">{hero.eyebrow}</p>
             <h1 className="mt-3 max-w-[32rem] whitespace-pre-line font-display text-[2.55rem] leading-[0.94] tracking-[0.015em] text-brand-ink sm:text-[2.65rem] xl:text-[3.1rem]">{hero.title}</h1>
