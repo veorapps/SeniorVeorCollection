@@ -29,7 +29,7 @@ export function CatalogListingPage({ activeFamily, data, mode, products, sort }:
           <Media asset={data.hero.image} className="absolute inset-0 h-full w-full object-cover object-[20%_center] sm:object-[65%_center]" loading="eager" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-ivory/95 via-brand-ivory/70 to-transparent sm:from-transparent sm:via-transparent" />
           <Container className="relative min-h-[25rem] py-4 sm:min-h-[20.4rem]">
-            <Breadcrumb items={[{ label: "Koleksiyon", href: "/koleksiyon" }, { label: "Parfümler" }]} />
+            <Breadcrumb items={[{ label: "Parfümler", href: "/parfumler" }, { label: "Tüm Parfümler" }]} />
             <div className="mt-9 max-w-[21rem] sm:mt-8 sm:max-w-[23rem]">
               <p className="text-[0.625rem] tracking-[0.18em] text-brand-gold uppercase">{data.hero.eyebrow}</p>
               <h1 className="mt-2 font-display text-[2.75rem] leading-[0.96] text-brand-ink sm:text-[3rem]">{data.hero.title}</h1>
@@ -60,7 +60,7 @@ export function CatalogListingPage({ activeFamily, data, mode, products, sort }:
             <h2 className="text-center font-display text-[1.375rem] leading-tight tracking-[0.06em] text-[#705630]">{data.scentFamilies.title}</h2>
             <div className="mt-2 grid grid-cols-2 gap-2.5 sm:grid-cols-3 lg:grid-cols-6">
               {data.scentFamilies.items.filter((family) => family.enabled).sort((a, b) => a.order - b.order).map((family) => (
-                <Link aria-current={activeFamily === family.id ? "page" : undefined} className="group overflow-hidden border border-[#e8dfd3] bg-[#fffdfa] transition-colors hover:border-brand-gold" href={`/koleksiyon?family=${family.id}`} key={family.id}>
+                <Link aria-current={activeFamily === family.id ? "page" : undefined} className="group overflow-hidden border border-[#e8dfd3] bg-[#fffdfa] transition-colors hover:border-brand-gold" href={`/parfumler?family=${family.id}`} key={family.id}>
                   <Media asset={family.image} className="aspect-[2.6] object-cover transition-transform duration-300 group-hover:scale-[1.04] motion-reduce:transition-none" sizes="(min-width: 1024px) 16vw, 50vw" />
                   <div className="px-1.5 py-1 text-center">
                     <h3 className="font-display text-[0.8125rem] leading-tight text-brand-ink">{family.label}</h3>
